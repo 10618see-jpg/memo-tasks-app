@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <title>Memo Tasks App</title>
+</head>
+
+<body>
+    <main>
+        <h1>メモタスクアプリ</h1>
+        <!-- タスクエリア -->
+        <section id="task-area">
+            <h2>タスク一覧</h2>
+            <!-- カンバンボード -->
+            <div id="kanban-board">
+                <h3>タスクステータス</h3>
+                <div class="kanban-column">
+                    <h3>開始前</h3>
+                    <ul data-status="todo">
+                    </ul>
+                </div>
+                <div class="kanban-column">
+                    <h3>作業中</h3>
+                    <ul data-status="active">
+                    </ul>
+                </div>
+                <div class="kanban-column">
+                    <h3>完了</h3>
+                    <ul data-status="done">
+                    </ul>
+                </div>
+            </div>
+            <!-- 新しいタスク追加フォーム -->
+            <form id="new-task-form">
+                <!-- タイトル -->
+                <label for="new-task-title">タイトル</label>
+                <input type="text" id="new-task-title" required>
+                <!-- 内容 -->
+                <label for="new-task-content">内容</label>
+                <textarea id="new-task-content" maxlength="100" required></textarea>
+                <!-- 期限 -->
+                <label for="new-task-due-date">期限</label>
+                <input type="date" id="new-task-due-date" required>
+                <!-- 優先度 -->
+                <label for="new-task-priority">優先度</label>
+                <select id="new-task-priority">
+                    <option value="low">低</option>
+                    <option value="medium">中</option>
+                    <option value="high">高</option>
+                </select>
+                <!-- 追加ボタン -->
+                <button type="submit" id="add-task">追加</button>
+            </form>
+        </section>
+        <!-- メモエリア -->
+        <section id="memo-area">
+            <h2>メモ一覧</h2>
+            <ul id="memo-list">
+                <!-- メモがここに追加されます -->
+            </ul>
+            <form id="new-memo-form">
+                <label for="new-memo">新しいメモ</label>
+                <input type="text" id="new-memo" maxlength="200" required>
+                <button type="submit" id="add-memo">追加</button>
+            </form>
+        </section>
+    </main>
+</body>
+
+</html>
