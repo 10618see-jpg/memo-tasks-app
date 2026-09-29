@@ -52,3 +52,10 @@ console.log(activeTasks);
 // index.HTMLからステータスがtodoのタスクを抽出
 const todoListElement = document.querySelector("ul[data-status='todo']");
 console.log(todoListElement);
+
+// ステータスがtodoのタスクをHTMLに追加
+todoTasks.forEach(task => {
+    const listItem = document.createElement("li");
+    listItem.textContent = task.title;
+    todoListElement.appendChild(listItem);
+});
