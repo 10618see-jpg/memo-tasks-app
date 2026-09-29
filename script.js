@@ -29,3 +29,5 @@ const task3 = {
     completedAt: null
 };
 
+// タスク配列
+const tasks = [task1, task2, task3];
