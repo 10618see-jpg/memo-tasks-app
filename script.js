@@ -31,3 +31,24 @@ const task3 = {
 
 // タスク配列
 const tasks = [task1, task2, task3];
+
+// タスクのタイトルをコンソールに出力
+tasks.forEach(task => {
+    console.log(task.title);
+});
+
+// ステータスがtodoのタスクをコンソールに出力
+const todoTasks = tasks.filter(task => task.status === "todo");
+console.log(todoTasks);
+
+// ステータスがdoneのタスクをコンソールに出力
+const doneTasks = tasks.filter(task => task.status === "done");
+console.log(doneTasks);
+
+// ステータスがactiveのタスクをコンソールに出力
+const activeTasks = tasks.filter(task => task.status === "active");
+console.log(activeTasks);
+
+// index.HTMLからステータスがtodoのタスクを抽出
+const todoListElement = document.querySelector("ul[data-status='todo']");
+console.log(todoListElement);
