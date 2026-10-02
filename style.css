@@ -1,0 +1,36 @@
+/* スタイルシート全体の設定 */
+:root {
+    --bg-base: #181A20;
+    --column-bg: #1E222A;
+    --card-bg: #282D37;
+    --area-base: #101216;
+}
+body {
+    background-color: var(--bg-base);
+    color: #f0f0f0;
+}
+
+/* カンバンボードのスタイル */
+#kanban-board {
+    display: flex;
+}
+
+/* ボードカラムのスタイル */
+.kanban-column {
+    background-color: var(--column-bg);
+}
+
+/* タスクカードのスタイル */
+.kanban-column li {
+    background-color: var(--card-bg);
+}
+
+/* タスクエリアのスタイル */
+#task-area {
+    background-color: var(--area-base);
+}
+
+/* メモエリアのスタイル */
+#memo-area {
+    background-color: var(--area-base);
+}
