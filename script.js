@@ -37,25 +37,18 @@ tasks.forEach(task => {
     console.log(task.title);
 });
 
-// ステータスがtodoのタスクをコンソールに出力
-const todoTasks = tasks.filter(task => task.status === "todo");
-console.log(todoTasks);
+// status関数
+const renderTasksByStatus = (status) => {
+    const listElement = document.querySelector(`ul[data-status='${status}']`);
+    const filteredTasks = tasks.filter(task => task.status === status);
+    filteredTasks.forEach(task => {
+        const listItem = document.createElement("li");
+        listItem.textContent = task.title;
+        listElement.appendChild(listItem);
+    });
+};
 
-// ステータスがdoneのタスクをコンソールに出力
-const doneTasks = tasks.filter(task => task.status === "done");
-console.log(doneTasks);
-
-// ステータスがactiveのタスクをコンソールに出力
-const activeTasks = tasks.filter(task => task.status === "active");
-console.log(activeTasks);
-
-// index.HTMLからステータスがtodoのタスクを抽出
-const todoListElement = document.querySelector("ul[data-status='todo']");
-console.log(todoListElement);
-
-// ステータスがtodoのタスクをHTMLに追加
-todoTasks.forEach(task => {
-    const listItem = document.createElement("li");
-    listItem.textContent = task.title;
-    todoListElement.appendChild(listItem);
-});
+//関数の呼び出し
+renderTasksByStatus("todo");
+renderTasksByStatus("done");
+renderTasksByStatus("active");
