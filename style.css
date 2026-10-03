@@ -13,16 +13,31 @@ body {
 /* カンバンボードのスタイル */
 #kanban-board {
     display: flex;
+    gap: 16px;
 }
 
 /* ボードカラムのスタイル */
 .kanban-column {
     background-color: var(--column-bg);
+    border-radius: 8px;
+    padding: 16px;
+    flex: 1;
+}
+
+/* ボードカラム内のリストのスタイル */
+.kanban-column ul {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
 
 /* タスクカードのスタイル */
 .kanban-column li {
     background-color: var(--card-bg);
+    border-radius: 8px;
+    padding: 16px;
+    list-style: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 /* タスクエリアのスタイル */
