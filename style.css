@@ -4,10 +4,13 @@
     --column-bg: #1E222A;
     --card-bg: #282D37;
     --area-base: #101216;
+    --label-color: #e5e5e5;
+    --font-color: #f0f0f0;
+    --form-border: 1px solid #a0a0a0;
 }
 body {
+    color: var(--font-color);
     background-color: var(--bg-base);
-    color: #f0f0f0;
 }
 
 /* カンバンボードのスタイル */
@@ -40,10 +43,100 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-/* タスクエリアのスタイル */
-#task-area {
-    background-color: var(--area-base);
+/* 新しいタスク追加フォームのスタイル */
+#new-task-form {
+    background-color: var(--column-bg);
+    display: flex;
+    gap: 16px;
 }
+/* フォーム内共通のスタイル */
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+/* フォーム左側のスタイル */
+.form-left {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex: 2;
+}
+/* フォーム右側のスタイル */
+.form-right {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex: 1;
+}
+
+/* フォーム内のラベルのスタイル */
+.form-group label {
+    color: var(--label-color);
+}
+
+/* フォーム内の入力フィールドのスタイル */
+.form-group input,
+.form-group textarea {
+    background-color: var(--card-bg);
+    border: var(--form-border);
+    border-radius: 4px;
+    padding: 8px;
+    color: var(--font-color);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form-group select {
+    width: 50%;
+    background-color: var(--card-bg);
+    border: var(--form-border);
+    border-radius: 4px;
+    padding: 8px;
+    color: var(--font-color);
+    box-sizing: border-box;
+}
+
+/* フォーム内のボタンのスタイル */
+.form-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+/* 追加ボタンのスタイル */
+#add-task {
+    display: flex;
+    border: none;
+    border-radius: 25px;
+    box-shadow: 0 2px 3px rgb(0 0 0 / 25%), 0 2px 3px -2px rgb(0 0 0 / 15%);
+    background-color: #28a745;
+    color: #fff;
+    font-weight: 400;
+    justify-content: center;
+    padding: 8px 16px;
+}
+/* 追加ボタンのホバー時のスタイル */
+#add-task:hover {
+    background-color: #189735;
+}
+/* クリアボタンのスタイル */
+#clear-tasks {
+    display: flex;
+    border: none;
+    border-radius: 25px;
+    box-shadow: 0 2px 3px rgb(0 0 0 / 25%), 0 2px 3px -2px rgb(0 0 0 / 15%);
+    background-color: #dc3545;
+    color: #fff;
+    font-weight: 400;
+    justify-content: center;
+    padding: 8px 16px;
+}
+/* クリアボタンのホバー時のスタイル */
+#clear-tasks:hover {
+    background-color: #c82333;
+}
+
+
 
 /* メモエリアのスタイル */
 #memo-area {
