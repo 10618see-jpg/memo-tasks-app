@@ -53,17 +53,25 @@ renderTasksByStatus("todo");
 renderTasksByStatus("done");
 renderTasksByStatus("active");
 
+// メモカラー関数
+const getRandomMemoColor = () => {
+    const colors = ["memo-red", "memo-blue", "memo-green", "memo-yellow"];
+    return colors[Math.floor(Math.random() * colors.length)];
+};
+
 // メモデータ
 const memo1 = {
     id: 1,
     content: "メモの内容",
-    createdAt: new Date().toISOString()
+    createdAt: new Date().toISOString(),
+    color: getRandomMemoColor(),
 };
 
 const memo2 = {
     id: 2,
     content: "メモの内容2",
-    createdAt: new Date().toISOString()
+    createdAt: new Date().toISOString(),
+    color: getRandomMemoColor(),
 };
 
 // メモ配列
@@ -82,13 +90,16 @@ const renderMemos = () => {
         const memoContent = document.createElement("p");
         memoContent.textContent = memo.content;
         const memoCreatedAt = document.createElement("time");
-        memoCreatedAt.textContent = `作成日: ${memo.createdAt}`;
+        memoCreatedAt.textContent = `作成日: ${new Date(memo.createdAt).toLocaleDateString()}`;
         memoCreatedAt.setAttribute("datetime", memo.createdAt);
         memoItem.appendChild(memoContent);
         memoItem.appendChild(memoCreatedAt);
-        memoArea.appendChild(memoItem);
+        memoArea.appendChild(memoItem); 
+        memoItem.classList.add("memo-card", memo.color);
+        memoCreatedAt.classList.add("memo-created-at");
     });
 };
 
 // 関数の呼び出し
 renderMemos();
+
