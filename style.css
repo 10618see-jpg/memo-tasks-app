@@ -1,12 +1,16 @@
 /* スタイルシート全体の設定 */
 :root {
     --bg-base: #181A20;
-    --column-bg: #1E222A;
+    --area-bg: #1E222A;
     --card-bg: #282D37;
-    --area-base: #101216;
     --label-color: #e5e5e5;
     --font-color: #f0f0f0;
     --form-border: 1px solid #a0a0a0;
+    --memo-red: #ffcccc;
+    --memo-blue: #cce5ff;
+    --memo-green: #e5ffcc;
+    --memo-yellow: #ffffcc;
+    --memo-text: #2a2a2a;
 }
 body {
     color: var(--font-color);
@@ -21,7 +25,7 @@ body {
 
 /* ボードカラムのスタイル */
 .kanban-column {
-    background-color: var(--column-bg);
+    background-color: var(--area-bg);
     border-radius: 8px;
     padding: 16px;
     flex: 1;
@@ -45,7 +49,7 @@ body {
 
 /* 新しいタスク追加フォームのスタイル */
 #new-task-form {
-    background-color: var(--column-bg);
+    background-color: var(--area-bg);
     display: flex;
     gap: 16px;
 }
@@ -139,6 +143,50 @@ body {
 
 
 /* メモエリアのスタイル */
-#memo-area {
-    background-color: var(--area-base);
+
+/* メモリストのスタイル */
+#memo-list {
+    background-color: var(--area-bg);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 16px;
+
+}
+
+/* メモアイテムのスタイル */
+.memo-card {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    padding: 8px;
+    list-style: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    aspect-ratio: 1 / 1;
+    width: 230px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+/* メモ作成日のスタイル */
+.memo-created-at {
+    font-size: 12px;
+    color: var(--memo-text);
+    align-self: flex-end;
+}
+
+.memo-red {
+    background-color: var(--memo-red);
+    color: var(--memo-text);
+}
+.memo-blue {
+    background-color: var(--memo-blue);
+    color: var(--memo-text);
+}
+.memo-green {
+    background-color: var(--memo-green);
+    color: var(--memo-text);
+}
+.memo-yellow {
+    background-color: var(--memo-yellow);
+    color: var(--memo-text);
 }
