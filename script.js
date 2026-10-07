@@ -52,3 +52,43 @@ const renderTasksByStatus = (status) => {
 renderTasksByStatus("todo");
 renderTasksByStatus("done");
 renderTasksByStatus("active");
+
+// メモデータ
+const memo1 = {
+    id: 1,
+    content: "メモの内容",
+    createdAt: new Date().toISOString()
+};
+
+const memo2 = {
+    id: 2,
+    content: "メモの内容2",
+    createdAt: new Date().toISOString()
+};
+
+// メモ配列
+const memos = [memo1, memo2];
+
+// メモをコンソールに出力
+memos.forEach(memo => {
+    console.log(memo.content);
+});
+
+// メモを表示する関数
+const renderMemos = () => {
+    const memoArea = document.getElementById("memo-list");
+    memos.forEach(memo => {
+        const memoItem = document.createElement("li");
+        const memoContent = document.createElement("p");
+        memoContent.textContent = memo.content;
+        const memoCreatedAt = document.createElement("time");
+        memoCreatedAt.textContent = `作成日: ${memo.createdAt}`;
+        memoCreatedAt.setAttribute("datetime", memo.createdAt);
+        memoItem.appendChild(memoContent);
+        memoItem.appendChild(memoCreatedAt);
+        memoArea.appendChild(memoItem);
+    });
+};
+
+// 関数の呼び出し
+renderMemos();
