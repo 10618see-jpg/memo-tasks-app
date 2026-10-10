@@ -64,7 +64,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 16px;
-    flex: 2;
+    flex: 3;
 }
 /* フォーム右側のスタイル */
 .form-right {
