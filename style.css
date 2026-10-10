@@ -48,6 +48,11 @@ body {
     flex-direction: column;
     display: flex;
 }
+
+.task-due-date {
+    font-size: 12px;
+    color: var(--font-color);
+    align-self: flex-end;
 }
 
 /* 新しいタスク追加フォームのスタイル */
