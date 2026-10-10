@@ -79,9 +79,11 @@
                 <!-- メモがここに追加されます -->
             </ul>
             <form id="new-memo-form">
-                <label for="new-memo">新しいメモ</label>
-                <input type="text" id="new-memo" maxlength="200" required>
-                <button type="submit" id="add-memo">追加</button>
+                <label for="new-memo">メモ追加</label>
+                <div class="memo-form">
+                    <textarea rows="4" id="new-memo" maxlength="200" required></textarea>
+                    <button type="submit" id="add-memo">追加</button>
+                </div>
             </form>
         </section>
     </main>
