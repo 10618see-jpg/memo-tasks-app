@@ -16,6 +16,9 @@ body {
     color: var(--font-color);
     background-color: var(--bg-base);
 }
+textarea {
+  resize: none; /* 縦方向と横方向の拡大を防ぐ */
+}
 
 /* カンバンボードのスタイル */
 #kanban-board {
