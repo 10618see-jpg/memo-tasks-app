@@ -45,6 +45,9 @@ body {
     padding: 16px;
     list-style: none;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    flex-direction: column;
+    display: flex;
+}
 }
 
 /* 新しいタスク追加フォームのスタイル */
