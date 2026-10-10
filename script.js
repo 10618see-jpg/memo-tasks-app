@@ -37,14 +37,19 @@ tasks.forEach(task => {
     console.log(task.title);
 });
 
-// status関数
+// status別にタスクを表示する関数
 const renderTasksByStatus = (status) => {
     const listElement = document.querySelector(`ul[data-status='${status}']`);
     const filteredTasks = tasks.filter(task => task.status === status);
     filteredTasks.forEach(task => {
         const listItem = document.createElement("li");
+        const dueDate = document.createElement("time");
+        dueDate.textContent = `期限日: ${new Date(task.dueDate).toLocaleDateString()}`;
+        dueDate.setAttribute("datetime", task.dueDate);
         listItem.textContent = task.title;
+        listItem.appendChild(dueDate);
         listElement.appendChild(listItem);
+        dueDate.classList.add("task-due-date");
     });
 };
 
