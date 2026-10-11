@@ -232,3 +232,23 @@ textarea {
 #add-memo:hover {
     background-color: #189735;
 }
+
+/* 優先度バッジのスタイル */
+.priority-badge {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff;
+    width: fit-content;
+}
+.priority-low {
+    background-color: #28a745;
+}
+.priority-medium {
+    background-color: #ff7f07;
+}
+.priority-high {
+    background-color: #dc3545;
+}
