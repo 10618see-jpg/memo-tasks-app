@@ -37,6 +37,13 @@ tasks.forEach(task => {
     console.log(task.title);
 });
 
+// 優先度バッジのオブジェクト
+const priorityBadges = {
+    low: { label: "低", color: "priority-low" },
+    medium: { label: "中", color: "priority-medium" },
+    high: { label: "高", color: "priority-high"  }
+};
+
 // status別にタスクを表示する関数
 const renderTasksByStatus = (status) => {
     const listElement = document.querySelector(`ul[data-status='${status}']`);
@@ -50,6 +57,11 @@ const renderTasksByStatus = (status) => {
         listItem.appendChild(dueDate);
         listElement.appendChild(listItem);
         dueDate.classList.add("task-due-date");
+        // 優先度バッジを追加
+        const priorityBadge = document.createElement("span");
+        priorityBadge.textContent = priorityBadges[task.priority].label;
+        priorityBadge.classList.add(priorityBadges[task.priority].color, "priority-badge");
+        listItem.appendChild(priorityBadge);
     });
 };
 
