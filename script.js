@@ -78,6 +78,7 @@ taskForm.addEventListener("submit", (event) => {
     const taskData = Object.fromEntries(formData);
     //空白の入力をチェック
     if (!taskData.title.trim() || !taskData.content.trim() || !taskData.dueDate.trim()) {
+        alert("タイトル、内容、期限日はすべて入力してください。");
         return;
     }
     // タスクの優先度がホワイトリストに含まれているかチェック
