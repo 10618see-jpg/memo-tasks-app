@@ -43,6 +43,7 @@ const priorityBadges = {
     medium: { label: "中", color: "priority-medium" },
     high: { label: "高", color: "priority-high"  }
 };
+const ALLOWED_PRIORITIES = Object.keys(priorityBadges);
 
 // status別にタスクを表示する関数
 const renderTasksByStatus = (status) => {
