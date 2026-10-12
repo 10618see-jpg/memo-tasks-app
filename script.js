@@ -78,13 +78,15 @@ taskForm.addEventListener("submit", (event) => {
     // フォーム送信時のデフォルト動作をキャンセル
     event.preventDefault();
     const formData = new FormData(taskForm);
-    const newTaskTitle = formData.get("title");
-    const newTaskContent = formData.get("content");
-    const newTaskDueDate = formData.get("due-date");
-    const newTaskPriority = formData.get("priority");
+    // フォームデータをオブジェクトに変換
+    const taskData = Object.fromEntries(formData);
     //空白の入力をチェック
-    if (!newTaskTitle.trim() || !newTaskContent.trim() || !newTaskDueDate.trim()) {
-        alert("すべての項目を入力してください。");
+    if (!taskData.title.trim() || !taskData.content.trim() || !taskData.dueDate.trim()) {
+        return;
+    }
+    // タスクの優先度がホワイトリストに含まれているかチェック
+    if (!ALLOWED_PRIORITIES.includes(taskData.priority)) {
+        alert("優先度は低、中、高のいずれかで指定してください。");
         return;
     }
     // 新しいタスクオブジェクトを作成
