@@ -117,6 +117,32 @@ const renderMemos = () => {
     });
 };
 
-// 関数の呼び出し
+// 新規メモフォームを取得して送信処理を設定
+const memoForm = document.getElementById("new-memo-form");
+memoForm.addEventListener("submit", (event) => {
+    // フォーム送信によるページ再読み込みを防止
+    event.preventDefault();
+    // 入力されたメモ本文を取得
+    const memoContent = document.getElementById("new-memo").value;
+    // 空白のメモは追加しない
+    if (!memoContent.trim()) {
+        alert("メモの内容を入力してください。");
+        return;
+    }
+    // 新しいメモデータを作成
+    const newMemo = {
+        id: Date.now(),
+        content: memoContent,
+        createdAt: new Date().toISOString(),
+        color: getRandomMemoColor(),
+    };
+    // メモ配列先頭に追加
+    memos.unshift(newMemo);
+    // メモ一覧を再描画
+    renderMemos();
+    // フォームをリセット
+    memoForm.reset();
+
+});
 renderMemos();
 
