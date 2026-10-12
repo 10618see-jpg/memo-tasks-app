@@ -92,10 +92,10 @@ taskForm.addEventListener("submit", (event) => {
     // 新しいタスクオブジェクトを作成
     const newTask = {
         id: Date.now(),
-        dueDate: newTaskDueDate,
-        title: newTaskTitle,
-        content: newTaskContent,
-        priority: newTaskPriority,
+        dueDate: taskData.dueDate,
+        title: taskData.title.trim(),
+        content: taskData.content.trim(),
+        priority: taskData.priority,
         status: "todo",
         completedAt: null
     };
@@ -178,7 +178,7 @@ memoForm.addEventListener("submit", (event) => {
     // 新しいメモデータを作成
     const newMemo = {
         id: Date.now(),
-        content: memoContent,
+        content: memoContent.trim(),
         createdAt: new Date().toISOString(),
         color: getRandomMemoColor(),
     };
