@@ -32,11 +32,6 @@ const task3 = {
 // 表示対象のタスクを配列にまとめる
 const tasks = [task1, task2, task3];
 
-// 各タスクのタイトルをコンソールに出力
-tasks.forEach(task => {
-    console.log(task.title);
-});
-
 // 優先度バッジのオブジェクト
 const priorityBadges = {
     low: { label: "低", color: "priority-low" },
@@ -77,6 +72,7 @@ const taskForm = document.getElementById("new-task-form");
 taskForm.addEventListener("submit", (event) => {
     // フォーム送信時のデフォルト動作をキャンセル
     event.preventDefault();
+    // フォームデータを取得
     const formData = new FormData(taskForm);
     // フォームデータをオブジェクトに変換
     const taskData = Object.fromEntries(formData);
@@ -188,7 +184,6 @@ memoForm.addEventListener("submit", (event) => {
     renderMemos();
     // フォームをリセット
     memoForm.reset();
-
 });
 // メモ一覧を画面に描画
 renderMemos();
