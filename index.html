@@ -40,27 +40,27 @@
                 <div class="form-left">
                     <div class="form-group">
                         <label for="new-task-title">タイトル</label>
-                        <input type="text" id="new-task-title" required>
+                        <input name="title" type="text" id="new-task-title" required>
                     </div>
                     <!-- 内容 -->
                     <div class="form-group">
                         <label for="new-task-content">内容</label>
-                        <textarea rows="6" id="new-task-content" maxlength="100" required></textarea>
+                        <textarea name="content" rows="6" id="new-task-content" maxlength="100" required></textarea>
                     </div>
                 </div>
                 <div class="form-right">
                     <!-- 期限 -->
                     <div class="form-group">
                         <label for="new-task-due-date">期限</label>
-                        <input type="date" id="new-task-due-date" required>
+                        <input name="due-date" type="date" id="new-task-due-date" required>
                     </div>
                     <!-- 優先度 -->
                     <div class="form-group">
                         <label for="new-task-priority">優先度</label>
-                        <select id="new-task-priority">
-                            <option value="low">低</option>
-                            <option value="medium">中</option>
-                            <option value="high">高</option>
+                        <select name="priority" id="new-task-priority">
+                            <option  value="low">低</option>
+                            <option  value="medium">中</option>
+                            <option  value="high">高</option>
                         </select>
                     </div>
                     <div class="form-buttons">

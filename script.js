@@ -48,6 +48,8 @@ const priorityBadges = {
 const renderTasksByStatus = (status) => {
     // 指定されたステータスに対応するリスト要素を取得
     const listElement = document.querySelector(`ul[data-status='${status}']`);
+    // 既存のタスクをクリア
+    listElement.replaceChildren();
     // 指定されたステータスのタスクだけを抽出
     const filteredTasks = tasks.filter(task => task.status === status);
     // 抽出したタスクをリスト項目にして画面へ追加
@@ -68,6 +70,41 @@ const renderTasksByStatus = (status) => {
         listItem.appendChild(priorityBadge);
     });
 };
+
+// 新規タスクフォームを取得して送信処理を設定
+const taskForm = document.getElementById("new-task-form");
+taskForm.addEventListener("submit", (event) => {
+    // フォーム送信時のデフォルト動作をキャンセル
+    event.preventDefault();
+    const formData = new FormData(taskForm);
+    const newTaskTitle = formData.get("title");
+    const newTaskContent = formData.get("content");
+    const newTaskDueDate = formData.get("due-date");
+    const newTaskPriority = formData.get("priority");
+    //空白の入力をチェック
+    if (!newTaskTitle.trim() || !newTaskContent.trim() || !newTaskDueDate.trim()) {
+        alert("すべての項目を入力してください。");
+        return;
+    }
+    // 新しいタスクオブジェクトを作成
+    const newTask = {
+        id: Date.now(),
+        dueDate: newTaskDueDate,
+        title: newTaskTitle,
+        content: newTaskContent,
+        priority: newTaskPriority,
+        status: "todo",
+        completedAt: null
+    };
+    // タスク配列に追加
+    tasks.push(newTask);
+    // タスクを再描画
+    renderTasksByStatus("todo");
+    renderTasksByStatus("active");
+    renderTasksByStatus("done");
+    // フォームをリセット
+    taskForm.reset();
+});
 
 // 未着手・完了・進行中の各リストにタスクを表示
 renderTasksByStatus("todo");
@@ -102,6 +139,7 @@ const memos = [memo1, memo2];
 const renderMemos = () => {
     // メモ一覧を表示する領域を取得
     const memoArea = document.getElementById("memo-list");
+    // 既存のメモをクリア
     memoArea.replaceChildren();
     // 各メモの内容と作成日をリスト項目にして追加
     memos.forEach(memo => {
