@@ -1,4 +1,4 @@
- // タスクデータ
+ // 表示確認に使うタスクデータを作成
 const task1 = {
     id: 1,
     dueDate: "2024-06-30",
@@ -29,10 +29,10 @@ const task3 = {
     completedAt: null
 };
 
-// タスク配列
+// 表示対象のタスクを配列にまとめる
 const tasks = [task1, task2, task3];
 
-// タスクのタイトルをコンソールに出力
+// 各タスクのタイトルをコンソールに出力
 tasks.forEach(task => {
     console.log(task.title);
 });
@@ -46,9 +46,13 @@ const priorityBadges = {
 
 // status別にタスクを表示する関数
 const renderTasksByStatus = (status) => {
+    // 指定されたステータスに対応するリスト要素を取得
     const listElement = document.querySelector(`ul[data-status='${status}']`);
+    // 指定されたステータスのタスクだけを抽出
     const filteredTasks = tasks.filter(task => task.status === status);
+    // 抽出したタスクをリスト項目にして画面へ追加
     filteredTasks.forEach(task => {
+        // タスク名と期限を表示するリスト項目を作成
         const listItem = document.createElement("li");
         const dueDate = document.createElement("time");
         dueDate.textContent = `期限日: ${new Date(task.dueDate).toLocaleDateString()}`;
@@ -57,7 +61,7 @@ const renderTasksByStatus = (status) => {
         listItem.appendChild(dueDate);
         listElement.appendChild(listItem);
         dueDate.classList.add("task-due-date");
-        // 優先度バッジを追加
+        // タスクの優先度に対応するラベルとスタイルを設定
         const priorityBadge = document.createElement("span");
         priorityBadge.textContent = priorityBadges[task.priority].label;
         priorityBadge.classList.add(priorityBadges[task.priority].color, "priority-badge");
@@ -65,18 +69,18 @@ const renderTasksByStatus = (status) => {
     });
 };
 
-//関数の呼び出し
+// 未着手・完了・進行中の各リストにタスクを表示
 renderTasksByStatus("todo");
 renderTasksByStatus("done");
 renderTasksByStatus("active");
 
-// メモカラー関数
+// メモに割り当てる色を候補からランダムに選択
 const getRandomMemoColor = () => {
     const colors = ["memo-red", "memo-blue", "memo-green", "memo-yellow"];
     return colors[Math.floor(Math.random() * colors.length)];
 };
 
-// メモデータ
+// ランダムな色と作成日時を含むメモデータを作成
 const memo1 = {
     id: 1,
     content: "メモの内容",
@@ -91,27 +95,28 @@ const memo2 = {
     color: getRandomMemoColor(),
 };
 
-// メモ配列
+// 表示対象のメモを配列にまとめる
 const memos = [memo1, memo2];
 
-// メモをコンソールに出力
-memos.forEach(memo => {
-    console.log(memo.content);
-});
-
-// メモを表示する関数
+// メモ一覧を画面に表示する関数
 const renderMemos = () => {
+    // メモ一覧を表示する領域を取得
     const memoArea = document.getElementById("memo-list");
+    memoArea.replaceChildren();
+    // 各メモの内容と作成日をリスト項目にして追加
     memos.forEach(memo => {
+        // メモ本文と作成日を表示する要素を作成
         const memoItem = document.createElement("li");
-        const memoContent = document.createElement("p");
-        memoContent.textContent = memo.content;
+        const memoText = document.createElement("p");
+        memoText.textContent = memo.content;
         const memoCreatedAt = document.createElement("time");
         memoCreatedAt.textContent = `作成日: ${new Date(memo.createdAt).toLocaleDateString()}`;
         memoCreatedAt.setAttribute("datetime", memo.createdAt);
-        memoItem.appendChild(memoContent);
+        // 作成した要素をメモ項目と一覧領域に組み立てる
+        memoItem.appendChild(memoText);
         memoItem.appendChild(memoCreatedAt);
-        memoArea.appendChild(memoItem); 
+        memoArea.appendChild(memoItem);
+        // メモの色と作成日の表示用スタイルを設定
         memoItem.classList.add("memo-card", memo.color);
         memoCreatedAt.classList.add("memo-created-at");
     });
@@ -144,5 +149,5 @@ memoForm.addEventListener("submit", (event) => {
     memoForm.reset();
 
 });
+// メモ一覧を画面に描画
 renderMemos();
-
