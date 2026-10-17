@@ -48,6 +48,12 @@ const renderAllTasks = () => {
     STATUSES.forEach(status => renderTasksByStatus(status));
 };
 
+// 描画関数をまとめて呼び出す関数
+const render = () => {
+    renderAllTasks();
+    renderMemos();
+};
+
 // status別にタスクを表示する関数
 const renderTasksByStatus = (status) => {
     // 指定されたステータスに対応するリスト要素を取得
@@ -111,9 +117,6 @@ taskForm.addEventListener("submit", (event) => {
     // フォームをリセット
     taskForm.reset();
 });
-
-// ページ読み込み時に全てのタスクを描画
-renderAllTasks();
 
 // メモに割り当てる色を候補からランダムに選択
 const getRandomMemoColor = () => {
@@ -190,5 +193,5 @@ memoForm.addEventListener("submit", (event) => {
     // フォームをリセット
     memoForm.reset();
 });
-// メモ一覧を画面に描画
-renderMemos();
+// ページ読み込み時に全てのタスクとメモを描画
+render();
