@@ -40,6 +40,14 @@ const priorityBadges = {
 };
 const ALLOWED_PRIORITIES = Object.keys(priorityBadges);
 
+// ステータス配列
+const STATUSES = ["todo", "active", "done"];
+
+// 全てのステータスのタスクを描画する関数
+const renderAllTasks = () => {
+    STATUSES.forEach(status => renderTasksByStatus(status));
+};
+
 // status別にタスクを表示する関数
 const renderTasksByStatus = (status) => {
     // 指定されたステータスに対応するリスト要素を取得
@@ -99,17 +107,13 @@ taskForm.addEventListener("submit", (event) => {
     // タスク配列に追加
     tasks.push(newTask);
     // タスクを再描画
-    renderTasksByStatus("todo");
-    renderTasksByStatus("active");
-    renderTasksByStatus("done");
+    renderAllTasks();
     // フォームをリセット
     taskForm.reset();
 });
 
-// 未着手・完了・進行中の各リストにタスクを表示
-renderTasksByStatus("todo");
-renderTasksByStatus("done");
-renderTasksByStatus("active");
+// ページ読み込み時に全てのタスクを描画
+renderAllTasks();
 
 // メモに割り当てる色を候補からランダムに選択
 const getRandomMemoColor = () => {
