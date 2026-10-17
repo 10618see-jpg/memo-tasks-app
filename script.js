@@ -43,6 +43,12 @@ const ALLOWED_PRIORITIES = Object.keys(priorityBadges);
 // ステータス配列
 const STATUSES = ["todo", "active", "done"];
 
+// タスクを追加する関数
+const addTask = (newTask) => {
+    tasks.push(newTask);
+    render();
+};
+
 // 全てのステータスのタスクを描画する関数
 const renderAllTasks = () => {
     STATUSES.forEach(status => renderTasksByStatus(status));
@@ -110,10 +116,8 @@ taskForm.addEventListener("submit", (event) => {
         status: "todo",
         completedAt: null
     };
-    // タスク配列に追加
-    tasks.push(newTask);
-    // タスクを再描画
-    renderAllTasks();
+    // 新しいタスクを追加
+    addTask(newTask);
     // フォームをリセット
     taskForm.reset();
 });
