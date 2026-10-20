@@ -146,6 +146,12 @@ const memo2 = {
 // 表示対象のメモを配列にまとめる
 const memos = [memo1, memo2];
 
+// メモの追加
+const addMemo = (newMemo) => {
+    memos.unshift(newMemo);
+    render();
+};
+
 // メモ一覧を画面に表示する関数
 const renderMemos = () => {
     // メモ一覧を表示する領域を取得
@@ -190,10 +196,8 @@ memoForm.addEventListener("submit", (event) => {
         createdAt: new Date().toISOString(),
         color: getRandomMemoColor(),
     };
-    // メモ配列先頭に追加
-    memos.unshift(newMemo);
-    // メモ一覧を再描画
-    renderMemos();
+    // 新しいメモを追加
+    addMemo(newMemo);
     // フォームをリセット
     memoForm.reset();
 });
