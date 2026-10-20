@@ -146,9 +146,9 @@ const memo2 = {
 // 表示対象のメモを配列にまとめる
 const memos = [memo1, memo2];
 
-// メモの追加
+// メモを追加する関数
 const addMemo = (newMemo) => {
-    memos.unshift(newMemo);
+    memos.unshift(newMemo); // 配列の先頭に追加
     render();
 };
 
