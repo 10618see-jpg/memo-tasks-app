@@ -75,7 +75,10 @@ const renderTasksByStatus = (status) => {
         const dueDate = document.createElement("time");
         dueDate.textContent = `期限日: ${new Date(task.dueDate).toLocaleDateString()}`;
         dueDate.setAttribute("datetime", task.dueDate);
-        listItem.textContent = task.title;
+        const taskTitle = document.createElement("h4");
+        taskTitle.classList.add("task-title");
+        taskTitle.textContent = task.title;
+        listItem.appendChild(taskTitle);
         listItem.appendChild(dueDate);
         listElement.appendChild(listItem);
         dueDate.classList.add("task-due-date");

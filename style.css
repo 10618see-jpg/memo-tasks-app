@@ -60,6 +60,13 @@ textarea {
     align-self: flex-end;
 }
 
+/* タスクタイトルのスタイル */
+.task-title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: normal;
+}
+
 /* 新しいタスク追加フォームのスタイル */
 #new-task-form {
     background-color: var(--area-bg);
