@@ -174,11 +174,17 @@ const memo2 = {
 };
 
 // 表示対象のメモを配列にまとめる
-const memos = [memo1, memo2];
+let memos = [memo1, memo2];
 
 // メモを追加する関数
 const addMemo = (newMemo) => {
     memos.unshift(newMemo); // 配列の先頭に追加
+    render();
+};
+
+// メモを削除する関数
+const removeMemo = (memoId) => {
+    memos = memos.filter(memo => memo.id !== memoId);
     render();
 };
 
@@ -204,8 +210,25 @@ const renderMemos = () => {
         // メモの色と作成日の表示用スタイルを設定
         memoItem.classList.add("memo-card", memo.color);
         memoCreatedAt.classList.add("memo-created-at");
+        // 削除ボタンの作成
+        const deleteButton = document.createElement("button");
+        deleteButton.textContent = "×";
+        memoItem.dataset.id = memo.id;
+        deleteButton.classList.add("delete-button");
+        deleteButton.type = "button";
+        deleteButton.setAttribute("aria-label", `${memo.content.slice(0, 10)}を削除する`); // aria-labelにメモ内容の先頭10文字を設定
+        memoItem.appendChild(deleteButton);
     });
 };
+
+// メモ削除ボタンのクリックイベントを設定
+const memoList = document.getElementById("memo-list");
+memoList.addEventListener("click", (event) => {
+    const button = event.target.closest("button.delete-button");
+    if (!button) return;
+    const memoId = Number(button.closest("li").dataset.id);
+    removeMemo(memoId);
+});
 
 // 新規メモフォームを取得して送信処理を設定
 const memoForm = document.getElementById("new-memo-form");
