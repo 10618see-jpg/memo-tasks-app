@@ -79,6 +79,10 @@ const renderTasksByStatus = (status) => {
         taskTitle.classList.add("task-title");
         taskTitle.textContent = task.title;
         listItem.appendChild(taskTitle);
+        const taskContent = document.createElement("p");
+        taskContent.classList.add("task-content");
+        taskContent.textContent = task.content;
+        listItem.appendChild(taskContent);
         listItem.appendChild(dueDate);
         listElement.appendChild(listItem);
         dueDate.classList.add("task-due-date");
