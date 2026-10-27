@@ -52,6 +52,7 @@ textarea {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     flex-direction: column;
     display: flex;
+    position: relative;
 }
 
 .task-due-date {
@@ -65,6 +66,29 @@ textarea {
     margin: 0;
     font-size: 16px;
     font-weight: normal;
+    padding-right: 24px; /* 削除ボタンのスペース確保 */
+}
+
+/* 削除ボタンのスタイル */
+.delete-button {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 2px 3px rgb(0 0 0 / 25%), 0 2px 3px -2px rgb(0 0 0 / 15%);
+    background-color: var(--danger-color);
+    color: #fff;
+    cursor: pointer;
+}
+/* 削除ボタンのホバー時のスタイル */
+.delete-button:hover {
+    background-color: var(--danger-hover);
 }
 
 /* 新しいタスク追加フォームのスタイル */

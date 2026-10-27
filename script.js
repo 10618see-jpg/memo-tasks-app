@@ -30,7 +30,7 @@ const task3 = {
 };
 
 // 表示対象のタスクを配列にまとめる
-const tasks = [task1, task2, task3];
+let tasks = [task1, task2, task3];
 
 // 優先度バッジのオブジェクト
 const priorityBadges = {
@@ -46,6 +46,12 @@ const STATUSES = ["todo", "active", "done"];
 // タスクを追加する関数
 const addTask = (newTask) => {
     tasks.push(newTask);
+    render();
+};
+
+// タスクを削除する関数
+const removeTask = (taskId) => {
+    tasks = tasks.filter(task => task.id !== taskId);
     render();
 };
 
@@ -91,8 +97,25 @@ const renderTasksByStatus = (status) => {
         priorityBadge.textContent = priorityBadges[task.priority].label;
         priorityBadge.classList.add(priorityBadges[task.priority].color, "priority-badge");
         listItem.appendChild(priorityBadge);
+        // 削除ボタンの作成
+        const deleteButton = document.createElement("button");
+        deleteButton.textContent = "×";
+        listItem.dataset.id = task.id;
+        deleteButton.classList.add("delete-button");
+        deleteButton.type = "button";
+        deleteButton.setAttribute("aria-label", `${task.title}を削除する`);
+        listItem.appendChild(deleteButton);
     });
 };
+
+// タスク削除ボタンのクリックイベントを設定
+const kanbanBoard = document.getElementById("kanban-board");
+kanbanBoard.addEventListener("click", (event) => {
+    const button = event.target.closest("button.delete-button");
+    if (!button) return;
+    const taskId = Number(button.closest("li").dataset.id);
+    removeTask(taskId);
+});
 
 // 新規タスクフォームを取得して送信処理を設定
 const taskForm = document.getElementById("new-task-form");
