@@ -126,6 +126,16 @@ const renderTasksByStatus = (status) => {
         priorityBadge.textContent = priorityBadges[task.priority].label;
         priorityBadge.classList.add(priorityBadges[task.priority].color, "priority-badge");
         listItem.appendChild(priorityBadge);
+        // 次のステータスがある場合のみ、進めるボタンを作成して追加
+        const nextStatus = getNextStatus(task.status);
+        if (nextStatus) {
+            const advanceButton = document.createElement("button");
+            advanceButton.textContent = ">";
+            advanceButton.type = "button";
+            advanceButton.classList.add("advance-button");
+            advanceButton.setAttribute("aria-label", `${task.title}を${statusLabel[nextStatus].label}に進める`);
+            listItem.appendChild(advanceButton);
+        }
         // 削除ボタンの作成
         const deleteButton = document.createElement("button");
         deleteButton.textContent = "×";
