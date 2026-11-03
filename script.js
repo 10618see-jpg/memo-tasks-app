@@ -48,6 +48,19 @@ const priorityBadges = {
 };
 const ALLOWED_PRIORITIES = Object.keys(priorityBadges);
 
+// 次のタスクステータスを取得する関数
+const getNextStatus = (currentStatus) => {
+    const currentIndex = STATUSES.indexOf(currentStatus);
+    // 現在のステータスが有効かどうかを確認
+    if (currentIndex === -1) {
+        return null;
+    }
+    if (currentIndex === STATUSES.length - 1) {
+        return null;
+    }
+    return STATUSES[currentIndex + 1];
+};
+
 // タスクを追加する関数
 const addTask = (newTask) => {
     tasks.push(newTask);
