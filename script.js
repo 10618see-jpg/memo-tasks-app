@@ -63,7 +63,7 @@ const getNextStatus = (currentStatus) => {
 
 // タスクを追加する関数
 const addTask = (newTask) => {
-    tasks.push(newTask);
+    tasks = [...tasks, newTask];
     render();
 };
 
