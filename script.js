@@ -222,7 +222,7 @@ let memos = [memo1, memo2];
 
 // メモを追加する関数
 const addMemo = (newMemo) => {
-    memos.unshift(newMemo); // 配列の先頭に追加
+    memos = [newMemo, ...memos];
     render();
 };
 
