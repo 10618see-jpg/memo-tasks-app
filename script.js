@@ -73,6 +73,17 @@ const removeTask = (taskId) => {
     render();
 };
 
+// 次のタスクステータスに書き換える関数
+const advanceTask = (taskId) => {
+    const task = tasks.find(t => t.id === taskId);
+    if (!task) return;
+    const nextStatus = getNextStatus(task.status);
+    if (!nextStatus) return;
+    const completedAt = nextStatus === "done" ? new Date().toISOString() : task.completedAt;
+    tasks = tasks.map(t => t.id === taskId ? { ...t, status: nextStatus, completedAt: completedAt } : t);
+    render();
+};
+
 // 全てのステータスのタスクを描画する関数
 const renderAllTasks = () => {
     STATUSES.forEach(status => renderTasksByStatus(status));
