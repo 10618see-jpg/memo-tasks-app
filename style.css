@@ -274,11 +274,13 @@ textarea {
 .priority-badge {
     display: inline-block;
     padding: 4px 8px;
+    margin-bottom: 4px;
     border-radius: 12px;
     font-size: 12px;
     font-weight: 600;
     color: #fff;
     width: fit-content;
+    order: -1;
 }
 .priority-low {
     background-color: #28a745;
