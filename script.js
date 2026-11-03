@@ -32,6 +32,14 @@ const task3 = {
 // 表示対象のタスクを配列にまとめる
 let tasks = [task1, task2, task3];
 
+// ステータス表示名の対応表
+const statusLabel = {
+    todo: { label: "開始前" },
+    active: { label: "作業中" },
+    done: { label: "完了" }
+};
+const STATUSES = Object.keys(statusLabel);
+
 // 優先度バッジのオブジェクト
 const priorityBadges = {
     low: { label: "低", color: "priority-low" },
@@ -39,9 +47,6 @@ const priorityBadges = {
     high: { label: "高", color: "priority-high"  }
 };
 const ALLOWED_PRIORITIES = Object.keys(priorityBadges);
-
-// ステータス配列
-const STATUSES = ["todo", "active", "done"];
 
 // タスクを追加する関数
 const addTask = (newTask) => {
