@@ -147,13 +147,18 @@ const renderTasksByStatus = (status) => {
     });
 };
 
-// タスク削除ボタンのクリックイベントを設定
+// タスク削除ボタンと次のステータスに進むボタンのクリックイベントを設定
 const kanbanBoard = document.getElementById("kanban-board");
 kanbanBoard.addEventListener("click", (event) => {
-    const button = event.target.closest("button.delete-button");
-    if (!button) return;
-    const taskId = Number(button.closest("li").dataset.id);
-    removeTask(taskId);
+    const deleteButton = event.target.closest("button.delete-button");
+    const advanceButton = event.target.closest("button.advance-button");
+    if (!deleteButton && !advanceButton) return;
+    const taskId = Number(event.target.closest("li").dataset.id);
+    if (deleteButton) {
+        removeTask(taskId);
+    } else {
+        advanceTask(taskId);
+    }
 });
 
 // 新規タスクフォームを取得して送信処理を設定
