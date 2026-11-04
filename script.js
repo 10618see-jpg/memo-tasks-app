@@ -236,12 +236,14 @@ let memos = [memo1, memo2];
 // メモを追加する関数
 const addMemo = (newMemo) => {
     memos = [newMemo, ...memos];
+    saveMemos(memos);
     render();
 };
 
 // メモを削除する関数
 const removeMemo = (memoId) => {
     memos = memos.filter(memo => memo.id !== memoId);
+    saveMemos(memos);
     render();
 };
 
