@@ -74,12 +74,14 @@ const saveMemos = (memos) => {
 // タスクを追加する関数
 const addTask = (newTask) => {
     tasks = [...tasks, newTask];
+    saveTasks(tasks);
     render();
 };
 
 // タスクを削除する関数
 const removeTask = (taskId) => {
     tasks = tasks.filter(task => task.id !== taskId);
+    saveTasks(tasks);
     render();
 };
 
@@ -91,6 +93,7 @@ const advanceTask = (taskId) => {
     if (!nextStatus) return;
     const completedAt = nextStatus === "done" ? new Date().toISOString() : task.completedAt;
     tasks = tasks.map(t => t.id === taskId ? { ...t, status: nextStatus, completedAt: completedAt } : t);
+    saveTasks(tasks);
     render();
 };
 
