@@ -61,6 +61,16 @@ const getNextStatus = (currentStatus) => {
     return STATUSES[currentIndex + 1];
 };
 
+// タスクを保存する関数
+const saveTasks = (tasks) => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+};
+
+// メモを保存する関数
+const saveMemos = (memos) => {
+    localStorage.setItem("memos", JSON.stringify(memos));
+};
+
 // タスクを追加する関数
 const addTask = (newTask) => {
     tasks = [...tasks, newTask];
