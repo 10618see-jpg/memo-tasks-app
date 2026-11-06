@@ -1,34 +1,3 @@
-// 表示確認に使うタスクデータを作成
-const task1 = {
-    id: 1,
-    dueDate: "2024-06-30",
-    title: "タスク1",
-    content: "タスク1の内容",
-    priority: "high",
-    status: "todo",
-    completedAt: null
-};
-
-const task2 = {
-    id: 2,
-    dueDate: "2024-06-30",
-    title: "タスク2",
-    content: "タスク2の内容",
-    priority: "medium",
-    status: "done",
-    completedAt: new Date().toISOString()
-};
-
-const task3 = {
-    id: 3,
-    dueDate: "2024-06-30",
-    title: "タスク3",
-    content: "タスク3の内容",
-    priority: "low",
-    status: "active",
-    completedAt: null
-};
-
 // ステータス表示名の対応表
 const statusLabel = {
     todo: { label: "開始前" },
@@ -221,21 +190,6 @@ taskForm.addEventListener("submit", (event) => {
 const getRandomMemoColor = () => {
     const colors = ["memo-red", "memo-blue", "memo-green", "memo-yellow"];
     return colors[Math.floor(Math.random() * colors.length)];
-};
-
-// ランダムな色と作成日時を含むメモデータを作成
-const memo1 = {
-    id: 1,
-    content: "メモの内容",
-    createdAt: new Date().toISOString(),
-    color: getRandomMemoColor(),
-};
-
-const memo2 = {
-    id: 2,
-    content: "メモの内容2",
-    createdAt: new Date().toISOString(),
-    color: getRandomMemoColor(),
 };
 
 // メモを保存する関数
