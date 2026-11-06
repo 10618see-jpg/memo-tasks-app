@@ -29,9 +29,6 @@ const task3 = {
     completedAt: null
 };
 
-// 表示対象のタスクを配列にまとめる
-let tasks = [task1, task2, task3];
-
 // ステータス表示名の対応表
 const statusLabel = {
     todo: { label: "開始前" },
@@ -78,6 +75,9 @@ const loadTasks = () => {
         return [];
     }
 };
+
+// 表示対象のタスクを保存データから読み込む
+let tasks = loadTasks();
 
 // タスクを追加する関数
 const addTask = (newTask) => {
@@ -238,9 +238,6 @@ const memo2 = {
     color: getRandomMemoColor(),
 };
 
-// 表示対象のメモを配列にまとめる
-let memos = [memo1, memo2];
-
 // メモを保存する関数
 const saveMemos = (memos) => {
     localStorage.setItem("memos", JSON.stringify(memos));
@@ -257,6 +254,9 @@ const loadMemos = () => {
         return [];
     }
 };
+
+// 表示対象のメモを保存データから読み込む
+let memos = loadMemos();
 
 // メモを追加する関数
 const addMemo = (newMemo) => {
