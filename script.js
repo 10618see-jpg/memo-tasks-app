@@ -66,9 +66,17 @@ const saveTasks = (tasks) => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
 };
 
-// メモを保存する関数
-const saveMemos = (memos) => {
-    localStorage.setItem("memos", JSON.stringify(memos));
+
+// タスクを読み込む関数
+const loadTasks = () => {
+    try{
+        const taskItem = localStorage.getItem("tasks");
+        if (!taskItem) return [];
+        return JSON.parse(taskItem);
+    } catch(error) {
+        console.error('LocalStorageからのデータ取得に失敗しました:', error);
+        return [];
+    }
 };
 
 // タスクを追加する関数
@@ -232,6 +240,23 @@ const memo2 = {
 
 // 表示対象のメモを配列にまとめる
 let memos = [memo1, memo2];
+
+// メモを保存する関数
+const saveMemos = (memos) => {
+    localStorage.setItem("memos", JSON.stringify(memos));
+};
+
+// メモを読み込む関数
+const loadMemos = () => {
+    try{
+        const memoItem = localStorage.getItem("memos");
+        if (!memoItem) return [];
+        return JSON.parse(memoItem);
+    } catch(error) {
+        console.error('LocalStorageからのメモデータ取得に失敗しました:', error);
+        return [];
+    }
+};
 
 // メモを追加する関数
 const addMemo = (newMemo) => {
