@@ -86,6 +86,17 @@ const advanceTask = (taskId) => {
     render();
 };
 
+// 前のタスクステータスに戻す
+const revertTask = (taskId) => {
+    const task = tasks.find(t => t.id === taskId);
+    if (!task) return;
+    const previousStatus = getPreviousStatus(task.status);
+    if (!previousStatus) return;
+    tasks = tasks.map(t => t.id === taskId ? { ...t, status: previousStatus, completedAt: null } : t);
+    saveTasks(tasks);
+    render();
+};
+
 // 全てのステータスのタスクを描画する関数
 const renderAllTasks = () => {
     STATUSES.forEach(status => renderTasksByStatus(status));
