@@ -27,6 +27,18 @@ const getNextStatus = (currentStatus) => {
     return STATUSES[currentIndex + 1];
 };
 
+// 前のタスクステータスを取得
+const getPreviousStatus = (currentStatus) => {
+    const currentIndex = STATUSES.indexOf(currentStatus);
+    if (currentIndex === -1) {
+        return null;
+    }
+    if (currentIndex === 0) {
+        return null;
+    }
+    return STATUSES[currentIndex - 1];
+};
+
 // タスクを保存する関数
 const saveTasks = (tasks) => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
