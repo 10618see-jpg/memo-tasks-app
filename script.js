@@ -143,9 +143,14 @@ kanbanBoard.addEventListener("click", (event) => {
     const deleteButton = event.target.closest("button.delete-button");
     const advanceButton = event.target.closest("button.advance-button");
     if (!deleteButton && !advanceButton) return;
-    const taskId = Number(event.target.closest("li").dataset.id);
+    const taskListItem = event.target.closest("li");
+    const taskId = Number(taskListItem.dataset.id);
     if (deleteButton) {
-        removeTask(taskId);
+        const taskTitle = taskListItem.querySelector(".task-title").textContent;
+        const isOK = window.confirm(`${taskTitle}を削除しますか？`);
+        if (isOK) {
+            removeTask(taskId);
+        }
     } else {
         advanceTask(taskId);
     }
@@ -264,8 +269,12 @@ const memoList = document.getElementById("memo-list");
 memoList.addEventListener("click", (event) => {
     const button = event.target.closest("button.delete-button");
     if (!button) return;
-    const memoId = Number(button.closest("li").dataset.id);
-    removeMemo(memoId);
+    const memoListItem = button.closest("li");
+    const memoId = Number(memoListItem.dataset.id);
+    const isOK = window.confirm("メモを削除しますか？");
+    if (isOK) {
+        removeMemo(memoId);
+    }
 });
 
 // 新規メモフォームを取得して送信処理を設定
