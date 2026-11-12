@@ -92,19 +92,27 @@ textarea {
 .delete-button:hover {
     background-color: var(--danger-hover);
 }
-/* 次のステータスに進むボタンのスタイル */
-.advance-button {
-    margin: 4px 8px;
+/* ボタンラッパーのスタイル */
+.button-wrapper {
+    display: flex;
+    gap: 8px;
+}
+/* ステータス移動ボタンの共通スタイル */
+.advance-button,
+.revert-button {
     padding: 4px;
+    margin: 8px 0px; /* ボタン間のスペース確保 */
     background-color: var(--next-color);
     border: none;
     border-radius: 8px;
     box-shadow: 0 2px 3px rgb(0 0 0 / 25%), 0 2px 3px -2px rgb(0 0 0 / 15%);
     color: #fff;
     cursor: pointer;
+    flex: 1; /* ボタンラッパー内でボタンを均等に配置 */
 }
-/* 次のステータスに進むボタンのホバースタイル */
-.advance-button:hover {
+/* ステータス移動ボタンのホバースタイル */
+.advance-button:hover,
+.revert-button:hover {
     background-color: var(--next-hover);
 }
 
