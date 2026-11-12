@@ -139,6 +139,11 @@ const renderTasksByStatus = (status) => {
         priorityBadge.textContent = priorityBadges[task.priority].label;
         priorityBadge.classList.add(priorityBadges[task.priority].color, "priority-badge");
         listItem.appendChild(priorityBadge);
+        // ボタンをdivでラップして追加
+        const buttonWrapper = document.createElement("div");
+        buttonWrapper.classList.add("button-wrapper");
+        listItem.appendChild(buttonWrapper);
+
         // 前のステータスがある場合のみ、戻すボタンを作成して追加
         const previousStatus = getPreviousStatus(task.status);
         if (previousStatus) {
@@ -147,7 +152,7 @@ const renderTasksByStatus = (status) => {
             revertButton.type = "button";
             revertButton.classList.add("revert-button");
             revertButton.setAttribute("aria-label", `${task.title}を${statusLabel[previousStatus].label}に戻す`);
-            listItem.appendChild(revertButton);
+            buttonWrapper.appendChild(revertButton);
         }
         // 次のステータスがある場合のみ、進めるボタンを作成して追加
         const nextStatus = getNextStatus(task.status);
@@ -157,7 +162,7 @@ const renderTasksByStatus = (status) => {
             advanceButton.type = "button";
             advanceButton.classList.add("advance-button");
             advanceButton.setAttribute("aria-label", `${task.title}を${statusLabel[nextStatus].label}に進める`);
-            listItem.appendChild(advanceButton);
+            buttonWrapper.appendChild(advanceButton);
         }
         // 削除ボタンの作成
         const deleteButton = document.createElement("button");
