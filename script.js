@@ -139,6 +139,16 @@ const renderTasksByStatus = (status) => {
         priorityBadge.textContent = priorityBadges[task.priority].label;
         priorityBadge.classList.add(priorityBadges[task.priority].color, "priority-badge");
         listItem.appendChild(priorityBadge);
+        // 前のステータスがある場合のみ、戻すボタンを作成して追加
+        const previousStatus = getPreviousStatus(task.status);
+        if (previousStatus) {
+            const revertButton = document.createElement("button");
+            revertButton.textContent = "<";
+            revertButton.type = "button";
+            revertButton.classList.add("revert-button");
+            revertButton.setAttribute("aria-label", `${task.title}を${statusLabel[previousStatus].label}に戻す`);
+            listItem.appendChild(revertButton);
+        }
         // 次のステータスがある場合のみ、進めるボタンを作成して追加
         const nextStatus = getNextStatus(task.status);
         if (nextStatus) {
@@ -165,7 +175,8 @@ const kanbanBoard = document.getElementById("kanban-board");
 kanbanBoard.addEventListener("click", (event) => {
     const deleteButton = event.target.closest("button.delete-button");
     const advanceButton = event.target.closest("button.advance-button");
-    if (!deleteButton && !advanceButton) return;
+    const revertButton = event.target.closest("button.revert-button");
+    if (!deleteButton && !advanceButton && !revertButton) return;
     const taskListItem = event.target.closest("li");
     const taskId = Number(taskListItem.dataset.id);
     if (deleteButton) {
@@ -174,8 +185,10 @@ kanbanBoard.addEventListener("click", (event) => {
         if (isOK) {
             removeTask(taskId);
         }
-    } else {
+    } else if (advanceButton) {
         advanceTask(taskId);
+    } else if (revertButton) {
+        revertTask(taskId);
     }
 });
 
