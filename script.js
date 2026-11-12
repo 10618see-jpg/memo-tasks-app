@@ -50,7 +50,10 @@ const loadTasks = () => {
     try{
         const taskItem = localStorage.getItem("tasks");
         if (!taskItem) return [];
-        return JSON.parse(taskItem);
+        const parsedTasks = JSON.parse(taskItem);
+        if (Array.isArray(parsedTasks)) return parsedTasks;
+        console.error('LocalStorageタスクデータが不正です:', parsedTasks);
+        return [];
     } catch(error) {
         console.error('LocalStorageからのデータ取得に失敗しました:', error);
         return [];
@@ -248,7 +251,10 @@ const loadMemos = () => {
     try{
         const memoItem = localStorage.getItem("memos");
         if (!memoItem) return [];
-        return JSON.parse(memoItem);
+        const parsedMemos = JSON.parse(memoItem);
+        if (Array.isArray(parsedMemos)) return parsedMemos;
+        console.error('LocalStorageのメモデータが不正です:', parsedMemos);
+        return [];
     } catch(error) {
         console.error('LocalStorageからのメモデータ取得に失敗しました:', error);
         return [];
