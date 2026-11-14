@@ -1,45 +1,43 @@
 /* スタイルシート全体の設定 */
 :root {
     /* 背景色 */
-    --bg-base: #181A20;
+    --page-bg: #181A20;
     --area-bg: #1E222A;
     --card-bg: #282D37;
-    
+    --input-bg: #282D37;
     /* テキスト色 */
     --label-color: #e5e5e5;
-    --font-color: #f0f0f0;
-    --memo-text: #2a2a2a;
-    --white: #fff;
-    
+    --text-color: #f0f0f0;
+    --memo-card-color: #2a2a2a;
+    --accent-text-color: #fff;
     /* ボーダー */
-    --form-border: 1px solid #a0a0a0;
-    
+    --input-border-color: #a0a0a0;
+    --input-border: 1px solid var(--input-border-color);
     /* メモカード背景色 */
-    --memo-red: #ffcccc;
-    --memo-blue: #cce5ff;
-    --memo-green: #e5ffcc;
-    --memo-yellow: #ffffcc;
-    
+    --memo-card-red-bg: #ffcccc;
+    --memo-card-blue-bg: #cce5ff;
+    --memo-card-green-bg: #e5ffcc;
+    --memo-card-yellow-bg: #ffffcc;
     /* ボタン色 */
-    --danger-color: #dc3545;
-    --danger-hover: #c82333;
-    --next-color: #5c6370;
-    --next-hover: #6b7280;
-    --success-color: #28a745;
-    --success-hover: #189735;
-    
+    --add-button-bg: #28a745;
+    --add-button-hover-bg: #189735;
+    --clear-button-bg: #dc3545;
+    --clear-button-hover-bg: #c82333;
+    --delete-button-bg: #dc3545;
+    --delete-button-hover-bg: #c82333;
+    --move-button-bg: #5c6370;
+    --move-button-hover-bg: #6b7280;
     /* 優先度バッジ色 */
-    --priority-low: #28a745;
-    --priority-medium: #ff7f07;
-    --priority-high: #dc3545;
-    
+    --priority-badge-low-bg: #28a745;
+    --priority-badge-medium-bg: #ff7f07;
+    --priority-badge-high-bg: #dc3545;
     /* 影 */
-    --shadow-sm: 0 2px 3px rgb(0 0 0 / 25%), 0 2px 3px -2px rgb(0 0 0 / 15%);
-    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.3);
+    --button-shadow: 0 2px 3px rgb(0 0 0 / 25%), 0 2px 3px -2px rgb(0 0 0 / 15%);
+    --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 body {
-    color: var(--font-color);
-    background-color: var(--bg-base);
+    color: var(--text-color);
+    background-color: var(--page-bg);
 }
 textarea {
   resize: none; /* 縦方向と横方向の拡大を防ぐ */
@@ -72,7 +70,7 @@ textarea {
     border-radius: 8px;
     padding: 16px;
     list-style: none;
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--card-shadow);
     flex-direction: column;
     display: flex;
     position: relative;
@@ -80,7 +78,7 @@ textarea {
 
 .task-due-date {
     font-size: 12px;
-    color: var(--font-color);
+    color: var(--text-color);
     align-self: flex-end;
 }
 
@@ -104,14 +102,14 @@ textarea {
     height: 24px;
     border: none;
     border-radius: 8px;
-    box-shadow: var(--shadow-sm);
-    background-color: var(--danger-color);
-    color: var(--white);
+    box-shadow: var(--button-shadow);
+    background-color: var(--delete-button-bg);
+    color: var(--accent-text-color);
     cursor: pointer;
 }
 /* 削除ボタンのホバー時のスタイル */
 .delete-button:hover {
-    background-color: var(--danger-hover);
+    background-color: var(--delete-button-hover-bg);
 }
 /* ボタンラッパーのスタイル */
 .button-wrapper {
@@ -123,18 +121,18 @@ textarea {
 .revert-button {
     padding: 4px;
     margin: 8px 0px; /* ボタン間のスペース確保 */
-    background-color: var(--next-color);
+    background-color: var(--move-button-bg);
     border: none;
     border-radius: 8px;
-    box-shadow: var(--shadow-sm);
-    color: var(--white);
+    box-shadow: var(--button-shadow);
+    color: var(--accent-text-color);
     cursor: pointer;
     flex: 1; /* ボタンラッパー内でボタンを均等に配置 */
 }
 /* ステータス移動ボタンのホバースタイル */
 .advance-button:hover,
 .revert-button:hover {
-    background-color: var(--next-hover);
+    background-color: var(--move-button-hover-bg);
 }
 
 /* 新しいタスク追加フォームのスタイル */
@@ -172,22 +170,22 @@ textarea {
 /* フォーム内の入力フィールドのスタイル */
 .form-group input,
 .form-group textarea {
-    background-color: var(--card-bg);
-    border: var(--form-border);
+    background-color: var(--input-bg);
+    border: var(--input-border);
     border-radius: 4px;
     padding: 8px;
-    color: var(--font-color);
+    color: var(--text-color);
     width: 100%;
     box-sizing: border-box;
 }
 
 .form-group select {
     width: 50%;
-    background-color: var(--card-bg);
-    border: var(--form-border);
+    background-color: var(--input-bg);
+    border: var(--input-border);
     border-radius: 4px;
     padding: 8px;
-    color: var(--font-color);
+    color: var(--text-color);
     box-sizing: border-box;
 }
 
@@ -202,32 +200,32 @@ textarea {
     display: flex;
     border: none;
     border-radius: 25px;
-    box-shadow: var(--shadow-sm);
-    background-color: var(--success-color);
-    color: var(--white);
+    box-shadow: var(--button-shadow);
+    background-color: var(--add-button-bg);
+    color: var(--accent-text-color);
     font-weight: 400;
     justify-content: center;
     padding: 8px 16px;
 }
 /* 追加ボタンのホバー時のスタイル */
 #add-task:hover {
-    background-color: var(--success-hover);
+    background-color: var(--add-button-hover-bg);
 }
 /* クリアボタンのスタイル */
 #clear-tasks {
     display: flex;
     border: none;
     border-radius: 25px;
-    box-shadow: var(--shadow-sm);
-    background-color: var(--danger-color);
-    color: var(--white);
+    box-shadow: var(--button-shadow);
+    background-color: var(--clear-button-bg);
+    color: var(--accent-text-color);
     font-weight: 400;
     justify-content: center;
     padding: 8px 16px;
 }
 /* クリアボタンのホバー時のスタイル */
 #clear-tasks:hover {
-    background-color: var(--danger-hover);
+    background-color: var(--clear-button-hover-bg);
 }
 
 
@@ -250,7 +248,7 @@ textarea {
     border-radius: 8px;
     padding: 8px;
     list-style: none;
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--card-shadow);
     aspect-ratio: 1 / 1;
     width: 230px;
     display: flex;
@@ -261,25 +259,25 @@ textarea {
 /* メモ作成日のスタイル */
 .memo-created-at {
     font-size: 12px;
-    color: var(--memo-text);
+    color: var(--memo-card-color);
     align-self: flex-end;
 }
 
 .memo-red {
-    background-color: var(--memo-red);
-    color: var(--memo-text);
+    background-color: var(--memo-card-red-bg);
+    color: var(--memo-card-color);
 }
 .memo-blue {
-    background-color: var(--memo-blue);
-    color: var(--memo-text);
+    background-color: var(--memo-card-blue-bg);
+    color: var(--memo-card-color);
 }
 .memo-green {
-    background-color: var(--memo-green);
-    color: var(--memo-text);
+    background-color: var(--memo-card-green-bg);
+    color: var(--memo-card-color);
 }
 .memo-yellow {
-    background-color: var(--memo-yellow);
-    color: var(--memo-text);
+    background-color: var(--memo-card-yellow-bg);
+    color: var(--memo-card-color);
 }
 .memo-card p {
     padding-right: 32px; /* 削除ボタンのスペースを確保 */
@@ -292,11 +290,11 @@ textarea {
 }
 
 .memo-form textarea {
-    background-color: var(--card-bg);
-    border: var(--form-border);
+    background-color: var(--input-bg);
+    border: var(--input-border);
     border-radius: 4px;
     padding: 8px;
-    color: var(--font-color);
+    color: var(--text-color);
     width: 230px;
     height: 230px;
     box-sizing: border-box;
@@ -305,15 +303,15 @@ textarea {
 #add-memo {
     border: none;
     border-radius: 25px;
-    box-shadow: var(--shadow-sm);
-    background-color: var(--success-color);
-    color: var(--white);
+    box-shadow: var(--button-shadow);
+    background-color: var(--add-button-bg);
+    color: var(--accent-text-color);
     font-weight: 400;
     width: 80px;
     height: 30px;
 }
 #add-memo:hover {
-    background-color: var(--success-hover);
+    background-color: var(--add-button-hover-bg);
 }
 
 /* 優先度バッジのスタイル */
@@ -324,16 +322,16 @@ textarea {
     border-radius: 12px;
     font-size: 12px;
     font-weight: 600;
-    color: var(--white);
+    color: var(--accent-text-color);
     width: fit-content;
     order: -1;
 }
 .priority-low {
-    background-color: var(--priority-low);
+    background-color: var(--priority-badge-low-bg);
 }
 .priority-medium {
-    background-color: var(--priority-medium);
+    background-color: var(--priority-badge-medium-bg);
 }
 .priority-high {
-    background-color: var(--priority-high);
+    background-color: var(--priority-badge-high-bg);
 }
