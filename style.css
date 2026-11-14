@@ -1,20 +1,41 @@
 /* スタイルシート全体の設定 */
 :root {
+    /* 背景色 */
     --bg-base: #181A20;
     --area-bg: #1E222A;
     --card-bg: #282D37;
+    
+    /* テキスト色 */
     --label-color: #e5e5e5;
     --font-color: #f0f0f0;
+    --memo-text: #2a2a2a;
+    --white: #fff;
+    
+    /* ボーダー */
     --form-border: 1px solid #a0a0a0;
+    
+    /* メモカード背景色 */
     --memo-red: #ffcccc;
     --memo-blue: #cce5ff;
     --memo-green: #e5ffcc;
     --memo-yellow: #ffffcc;
-    --memo-text: #2a2a2a;
+    
+    /* ボタン色 */
     --danger-color: #dc3545;
     --danger-hover: #c82333;
     --next-color: #5c6370;
     --next-hover: #6b7280;
+    --success-color: #28a745;
+    --success-hover: #189735;
+    
+    /* 優先度バッジ色 */
+    --priority-low: #28a745;
+    --priority-medium: #ff7f07;
+    --priority-high: #dc3545;
+    
+    /* 影 */
+    --shadow-sm: 0 2px 3px rgb(0 0 0 / 25%), 0 2px 3px -2px rgb(0 0 0 / 15%);
+    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 body {
     color: var(--font-color);
@@ -51,7 +72,7 @@ textarea {
     border-radius: 8px;
     padding: 16px;
     list-style: none;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--shadow-md);
     flex-direction: column;
     display: flex;
     position: relative;
@@ -83,9 +104,9 @@ textarea {
     height: 24px;
     border: none;
     border-radius: 8px;
-    box-shadow: 0 2px 3px rgb(0 0 0 / 25%), 0 2px 3px -2px rgb(0 0 0 / 15%);
+    box-shadow: var(--shadow-sm);
     background-color: var(--danger-color);
-    color: #fff;
+    color: var(--white);
     cursor: pointer;
 }
 /* 削除ボタンのホバー時のスタイル */
@@ -105,8 +126,8 @@ textarea {
     background-color: var(--next-color);
     border: none;
     border-radius: 8px;
-    box-shadow: 0 2px 3px rgb(0 0 0 / 25%), 0 2px 3px -2px rgb(0 0 0 / 15%);
-    color: #fff;
+    box-shadow: var(--shadow-sm);
+    color: var(--white);
     cursor: pointer;
     flex: 1; /* ボタンラッパー内でボタンを均等に配置 */
 }
@@ -181,25 +202,25 @@ textarea {
     display: flex;
     border: none;
     border-radius: 25px;
-    box-shadow: 0 2px 3px rgb(0 0 0 / 25%), 0 2px 3px -2px rgb(0 0 0 / 15%);
-    background-color: #28a745;
-    color: #fff;
+    box-shadow: var(--shadow-sm);
+    background-color: var(--success-color);
+    color: var(--white);
     font-weight: 400;
     justify-content: center;
     padding: 8px 16px;
 }
 /* 追加ボタンのホバー時のスタイル */
 #add-task:hover {
-    background-color: #189735;
+    background-color: var(--success-hover);
 }
 /* クリアボタンのスタイル */
 #clear-tasks {
     display: flex;
     border: none;
     border-radius: 25px;
-    box-shadow: 0 2px 3px rgb(0 0 0 / 25%), 0 2px 3px -2px rgb(0 0 0 / 15%);
+    box-shadow: var(--shadow-sm);
     background-color: var(--danger-color);
-    color: #fff;
+    color: var(--white);
     font-weight: 400;
     justify-content: center;
     padding: 8px 16px;
@@ -229,7 +250,7 @@ textarea {
     border-radius: 8px;
     padding: 8px;
     list-style: none;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--shadow-md);
     aspect-ratio: 1 / 1;
     width: 230px;
     display: flex;
@@ -284,15 +305,15 @@ textarea {
 #add-memo {
     border: none;
     border-radius: 25px;
-    box-shadow: 0 2px 3px rgb(0 0 0 / 25%), 0 2px 3px -2px rgb(0 0 0 / 15%);
-    background-color: #28a745;
-    color: #fff;
+    box-shadow: var(--shadow-sm);
+    background-color: var(--success-color);
+    color: var(--white);
     font-weight: 400;
     width: 80px;
     height: 30px;
 }
 #add-memo:hover {
-    background-color: #189735;
+    background-color: var(--success-hover);
 }
 
 /* 優先度バッジのスタイル */
@@ -303,16 +324,16 @@ textarea {
     border-radius: 12px;
     font-size: 12px;
     font-weight: 600;
-    color: #fff;
+    color: var(--white);
     width: fit-content;
     order: -1;
 }
 .priority-low {
-    background-color: #28a745;
+    background-color: var(--priority-low);
 }
 .priority-medium {
-    background-color: #ff7f07;
+    background-color: var(--priority-medium);
 }
 .priority-high {
-    background-color: #dc3545;
+    background-color: var(--priority-high);
 }
