@@ -3,6 +3,7 @@
     /* カラー素材 */
     --gray-0: #ffffff;
     --gray-50: #f0f0f0;
+    --gray-200: #cccccc;
     --gray-450: #8a8a8a;
     --gray-500: #6b7280;
     --gray-600: #5c6370;
@@ -28,6 +29,7 @@
     --memo-card-color: var(--gray-850);
     --accent-text-color: var(--gray-0);
     /* ボーダー */
+    --border-color: 1px solid var(--gray-200);
     --input-border-color: var(--gray-450);
     --input-border: 1px solid var(--input-border-color);
     /* メモカード背景色 */
@@ -48,9 +50,6 @@
     --priority-badge-low-bg: var(--green-600);
     --priority-badge-medium-bg: var(--orange-500);
     --priority-badge-high-bg: var(--red-500);
-    /* 影 */
-    --button-shadow: 0 2px 3px rgb(0 0 0 / 25%), 0 2px 3px -2px rgb(0 0 0 / 15%);
-    --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 body {
     color: var(--text-color);
@@ -69,9 +68,9 @@ textarea {
 /* ボードカラムのスタイル */
 .kanban-column {
     background-color: var(--area-bg);
-    border-radius: 8px;
     padding: 16px;
     flex: 1;
+    border: var(--border-color);
 }
 
 /* ボードカラム内のリストのスタイル */
@@ -84,13 +83,12 @@ textarea {
 /* タスクカードのスタイル */
 .kanban-column li {
     background-color: var(--card-bg);
-    border-radius: 8px;
     padding: 16px;
     list-style: none;
-    box-shadow: var(--card-shadow);
     flex-direction: column;
     display: flex;
     position: relative;
+    border: var(--border-color);
 }
 
 .task-due-date {
@@ -109,7 +107,6 @@ textarea {
 
 /* ボタンの共通スタイル */
 button {
-    box-shadow: var(--button-shadow);
     cursor: pointer;
     border: none; /* ボタンのデフォルト境界線を削除 */
     color: var(--accent-text-color);
@@ -157,6 +154,8 @@ button {
     background-color: var(--area-bg);
     display: flex;
     gap: 16px;
+    padding: 16px; /* フォーム内の余白を確保 */
+    border: var(--border-color); /* フォームの境界線を追加 */
 }
 /* フォーム内共通のスタイル */
 .form-group {
@@ -250,22 +249,23 @@ button {
     flex-wrap: wrap;
     gap: 16px;
     padding: 16px;
+    border: var(--border-color); /* メモリストの境界線を追加 */
 
 }
-
 /* メモアイテムのスタイル */
 .memo-card {
     background-color: var(--card-bg);
     border-radius: 8px;
     padding: 8px;
     list-style: none;
-    box-shadow: var(--card-shadow);
     aspect-ratio: 1 / 1;
     width: 230px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     position: relative;
+    box-sizing: border-box;
+    border: var(--border-color); /* メモカードの境界線を追加 */
 }
 /* メモ作成日のスタイル */
 .memo-created-at {
