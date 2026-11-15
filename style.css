@@ -30,8 +30,7 @@
     --accent-text-color: var(--gray-0);
     /* ボーダー */
     --border-color: 1px solid var(--gray-200);
-    --input-border-color: var(--gray-450);
-    --input-border: 1px solid var(--input-border-color);
+    --input-border: 1px solid var(--gray-450);
     /* メモカード背景色 */
     --memo-card-red-bg: var(--red-100);
     --memo-card-blue-bg: var(--blue-100);
