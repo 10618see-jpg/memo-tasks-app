@@ -29,7 +29,7 @@
     --memo-card-color: var(--gray-850);
     --accent-text-color: var(--gray-0);
     /* ボーダー */
-    --border-color: 1px solid var(--gray-200);
+    --border: 1px solid var(--gray-200);
     --input-border: 1px solid var(--gray-450);
     /* メモカード背景色 */
     --memo-card-red-bg: var(--red-100);
@@ -69,7 +69,7 @@ textarea {
     background-color: var(--area-bg);
     padding: 16px;
     flex: 1;
-    border: var(--border-color);
+    border: var(--border);
 }
 
 /* ボードカラム内のリストのスタイル */
@@ -87,7 +87,7 @@ textarea {
     flex-direction: column;
     display: flex;
     position: relative;
-    border: var(--border-color);
+    border: var(--border);
 }
 
 .task-due-date {
@@ -152,7 +152,7 @@ button {
     display: flex;
     gap: 16px;
     padding: 16px; /* フォーム内の余白を確保 */
-    border: var(--border-color); /* フォームの境界線を追加 */
+    border: var(--border); /* フォームの境界線を追加 */
 }
 /* フォーム内共通のスタイル */
 .form-group {
@@ -242,7 +242,7 @@ button {
     flex-wrap: wrap;
     gap: 16px;
     padding: 16px;
-    border: var(--border-color); /* メモリストの境界線を追加 */
+    border: var(--border); /* メモリストの境界線を追加 */
 
 }
 /* メモアイテムのスタイル */
@@ -257,7 +257,7 @@ button {
     justify-content: space-between;
     position: relative;
     box-sizing: border-box;
-    border: var(--border-color); /* メモカードの境界線を追加 */
+    border: var(--border); /* メモカードの境界線を追加 */
 }
 /* メモ作成日のスタイル */
 .memo-created-at {
