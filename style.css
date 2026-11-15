@@ -107,6 +107,14 @@ textarea {
     padding-right: 24px; /* 削除ボタンのスペース確保 */
 }
 
+/* ボタンの共通スタイル */
+button {
+    box-shadow: var(--button-shadow);
+    cursor: pointer;
+    border: none; /* ボタンのデフォルト境界線を削除 */
+    color: var(--accent-text-color);
+}
+
 /* 削除ボタンのスタイル */
 .delete-button {
     position: absolute;
@@ -117,12 +125,8 @@ textarea {
     justify-content: center;
     width: 24px;
     height: 24px;
-    border: none;
     border-radius: 8px;
-    box-shadow: var(--button-shadow);
     background-color: var(--delete-button-bg);
-    color: var(--accent-text-color);
-    cursor: pointer;
 }
 /* 削除ボタンのホバー時のスタイル */
 .delete-button:hover {
@@ -139,11 +143,7 @@ textarea {
     padding: 4px;
     margin: 8px 0px; /* ボタン間のスペース確保 */
     background-color: var(--move-button-bg);
-    border: none;
     border-radius: 8px;
-    box-shadow: var(--button-shadow);
-    color: var(--accent-text-color);
-    cursor: pointer;
     flex: 1; /* ボタンラッパー内でボタンを均等に配置 */
 }
 /* ステータス移動ボタンのホバースタイル */
@@ -215,11 +215,8 @@ textarea {
 /* 追加ボタンのスタイル */
 #add-task {
     display: flex;
-    border: none;
     border-radius: 25px;
-    box-shadow: var(--button-shadow);
     background-color: var(--add-button-bg);
-    color: var(--accent-text-color);
     font-weight: 400;
     justify-content: center;
     padding: 8px 16px;
@@ -231,11 +228,8 @@ textarea {
 /* クリアボタンのスタイル */
 #clear-tasks {
     display: flex;
-    border: none;
     border-radius: 25px;
-    box-shadow: var(--button-shadow);
     background-color: var(--clear-button-bg);
-    color: var(--accent-text-color);
     font-weight: 400;
     justify-content: center;
     padding: 8px 16px;
@@ -318,11 +312,8 @@ textarea {
 }
 
 #add-memo {
-    border: none;
     border-radius: 25px;
-    box-shadow: var(--button-shadow);
     background-color: var(--add-button-bg);
-    color: var(--accent-text-color);
     font-weight: 400;
     width: 80px;
     height: 30px;
