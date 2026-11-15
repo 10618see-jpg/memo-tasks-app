@@ -5,6 +5,7 @@
     --gray-50: #f0f0f0;
     --gray-100: #e5e5e5;
     --gray-400: #a0a0a0;
+    --gray-450: #8a8a8a;
     --gray-500: #6b7280;
     --gray-600: #5c6370;
     --gray-800: #282d37;
@@ -20,18 +21,20 @@
     --green-700: #189735;
     --yellow-100: #ffffcc;
     --orange-500: #ff7f07;
+    --steel-600: #3f6f96;
+    --steel-700: #36648b;
     /* 背景色 */
-    --page-bg: var(--gray-950);
-    --area-bg: var(--gray-900);
-    --card-bg: var(--gray-800);
-    --input-bg: var(--gray-800);
+    --page-bg: var(--gray-0);
+    --area-bg: var(--gray-50);
+    --card-bg: var(--gray-0);
+    --input-bg: var(--gray-0);
     /* テキスト色 */
-    --label-color: var(--gray-100);
-    --text-color: var(--gray-50);
+    --label-color: var(--gray-600);
+    --text-color: var(--gray-850);
     --memo-card-color: var(--gray-850);
     --accent-text-color: var(--gray-0);
     /* ボーダー */
-    --input-border-color: var(--gray-400);
+    --input-border-color: var(--gray-450);
     --input-border: 1px solid var(--input-border-color);
     /* メモカード背景色 */
     --memo-card-red-bg: var(--red-100);
@@ -39,8 +42,8 @@
     --memo-card-green-bg: var(--green-100);
     --memo-card-yellow-bg: var(--yellow-100);
     /* ボタン色 */
-    --add-button-bg: var(--green-600);
-    --add-button-hover-bg: var(--green-700);
+    --add-button-bg: var(--steel-600);
+    --add-button-hover-bg: var(--steel-700);
     --clear-button-bg: var(--red-500);
     --clear-button-hover-bg: var(--red-600);
     --delete-button-bg: var(--red-500);
