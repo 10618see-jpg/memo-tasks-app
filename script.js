@@ -44,7 +44,6 @@ const saveTasks = (tasks) => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
 };
 
-
 // タスクを読み込む関数
 const loadTasks = () => {
     try{
@@ -75,6 +74,13 @@ const removeTask = (taskId) => {
     tasks = tasks.filter(task => task.id !== taskId);
     saveTasks(tasks);
     render();
+};
+
+// タスクフォームをクリアする関数
+const clearTasks = (newTask) => {
+    const form = document.getElementById("new-task-form");
+    if (!form) return;
+    form.reset();
 };
 
 // 次のタスクステータスに書き換える関数
@@ -233,6 +239,15 @@ taskForm.addEventListener("submit", (event) => {
     addTask(newTask);
     // フォームをリセット
     taskForm.reset();
+});
+
+// タスクフォームのクリアボタンのクリックイベントを設定
+const clearButton = document.getElementById("clear-tasks");
+clearButton.addEventListener("click", () => {
+    const isOK = window.confirm("入力中のタスクをクリアしますか？");
+    if (isOK) {
+        clearTasks();
+    }
 });
 
 // メモに割り当てる色を候補からランダムに選択
