@@ -76,13 +76,6 @@ const removeTask = (taskId) => {
     render();
 };
 
-// タスクフォームをクリアする関数
-const clearTasks = (newTask) => {
-    const form = document.getElementById("new-task-form");
-    if (!form) return;
-    form.reset();
-};
-
 // 次のタスクステータスに書き換える関数
 const advanceTask = (taskId) => {
     const task = tasks.find(t => t.id === taskId);
@@ -244,10 +237,7 @@ taskForm.addEventListener("submit", (event) => {
 // タスクフォームのクリアボタンのクリックイベントを設定
 const clearButton = document.getElementById("clear-task-form");
 clearButton.addEventListener("click", () => {
-    const isOK = window.confirm("入力中のタスクをクリアしますか？");
-    if (isOK) {
-        clearTasks();
-    }
+    taskForm.reset();
 });
 
 // メモに割り当てる色を候補からランダムに選択
