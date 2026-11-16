@@ -251,7 +251,7 @@ button {
     background-color: var(--add-button-hover-bg);
 }
 /* クリアボタンのスタイル */
-#clear-tasks {
+#clear-task-form {
     display: flex;
     background-color: var(--clear-button-bg);
     font-weight: 400;
@@ -259,7 +259,7 @@ button {
     padding: 8px 16px;
 }
 /* クリアボタンのホバー時のスタイル */
-#clear-tasks:hover {
+#clear-task-form:hover {
     background-color: var(--clear-button-hover-bg);
 }
 

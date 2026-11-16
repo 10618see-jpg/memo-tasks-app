@@ -242,7 +242,7 @@ taskForm.addEventListener("submit", (event) => {
 });
 
 // タスクフォームのクリアボタンのクリックイベントを設定
-const clearButton = document.getElementById("clear-tasks");
+const clearButton = document.getElementById("clear-task-form");
 clearButton.addEventListener("click", () => {
     const isOK = window.confirm("入力中のタスクをクリアしますか？");
     if (isOK) {
