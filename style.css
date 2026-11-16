@@ -8,13 +8,13 @@
     --gray-500: #6b7280;
     --gray-600: #5c6370;
     --gray-850: #2a2a2a;
-    --red-100: #ffcccc;
+    --red-350: #ce7e7e;
     --red-500: #dc3545;
     --red-600: #c82333;
-    --blue-100: #cce5ff;
-    --green-100: #e5ffcc;
+    --blue-400: #6b97c7;
+    --green-550: #40a840;
     --green-600: #28a745;
-    --yellow-100: #ffffcc;
+    --yellow-550: #ac9141;
     --orange-500: #ff7f07;
     --steel-600: #3f6f96;
     --steel-700: #36648b;
@@ -27,16 +27,15 @@
     /* テキスト色 */
     --label-color: var(--gray-600);
     --text-color: var(--gray-850);
-    --memo-card-color: var(--gray-850);
     --accent-text-color: var(--gray-0);
     /* ボーダー */
     --border: 1px solid var(--gray-200);
     --input-border: 1px solid var(--gray-450);
-    /* メモカード背景色 */
-    --memo-card-red-bg: var(--red-100);
-    --memo-card-blue-bg: var(--blue-100);
-    --memo-card-green-bg: var(--green-100);
-    --memo-card-yellow-bg: var(--yellow-100);
+    /* メモカードのボーダー色 */
+    --memo-card-red-border: 2px solid var(--red-350);
+    --memo-card-blue-border: 2px solid var(--blue-400);
+    --memo-card-green-border: 2px solid var(--green-550);
+    --memo-card-yellow-border: 2px solid var(--yellow-550);
     /* ボタン色 */
     --add-button-bg: var(--steel-600);
     --add-button-hover-bg: var(--steel-700);
@@ -287,25 +286,21 @@ button {
 /* メモ作成日のスタイル */
 .memo-created-at {
     font-size: 12px;
-    color: var(--memo-card-color);
     align-self: flex-end;
 }
 
 .memo-red {
-    background-color: var(--memo-card-red-bg);
-    color: var(--memo-card-color);
+    border: var(--memo-card-red-border);
 }
 .memo-blue {
-    background-color: var(--memo-card-blue-bg);
-    color: var(--memo-card-color);
+    border: var(--memo-card-blue-border);
 }
 .memo-green {
-    background-color: var(--memo-card-green-bg);
-    color: var(--memo-card-color);
+    border: var(--memo-card-green-border);
 }
 .memo-yellow {
-    background-color: var(--memo-card-yellow-bg);
-    color: var(--memo-card-color);
+
+    border: var(--memo-card-yellow-border);
 }
 .memo-card p {
     padding-right: 32px; /* 削除ボタンのスペースを確保 */
