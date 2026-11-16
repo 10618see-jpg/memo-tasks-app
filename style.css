@@ -51,11 +51,20 @@
     --priority-badge-high-bg: var(--red-500);
 }
 body {
+    font-family:
+    "Helvetica Neue",
+    Arial,
+    "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans",
+    "Noto Sans JP",
+    sans-serif;
     color: var(--text-color);
     background-color: var(--page-bg);
 }
-textarea {
+textarea, input, select, button {
+  font-family: inherit; /* 親要素のフォントを継承 */
   resize: none; /* 縦方向と横方向の拡大を防ぐ */
+  font-size: inherit; /* 親要素のフォントサイズを継承 */
 }
 
 /* カンバンボードのスタイル */
