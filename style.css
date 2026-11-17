@@ -72,8 +72,10 @@ body {
 }
 textarea, input, select, button {
   font-family: inherit; /* 親要素のフォントを継承 */
-  resize: none; /* 縦方向と横方向の拡大を防ぐ */
   font-size: inherit; /* 親要素のフォントサイズを継承 */
+}
+textarea {
+    resize: none; /* 縦方向と横方向の拡大を防ぐ */
 }
 header {
     background-color: var(--header-bg);
@@ -124,7 +126,6 @@ header h1 {
 
 .task-due-date {
     font-size: 12px;
-    color: var(--text-color);
     align-self: flex-end;
 }
 
@@ -341,7 +342,6 @@ button {
 
 /* 優先度バッジのスタイル */
 .priority-badge {
-    display: inline-block;
     padding: 4px 8px;
     margin-bottom: 4px;
     font-size: 12px;
