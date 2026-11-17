@@ -36,10 +36,10 @@
     --border: 1px solid var(--gray-200);
     --input-border: 1px solid var(--gray-450);
     /* メモカードのボーダー色 */
-    --memo-card-red-border: 2px solid var(--red-350);
-    --memo-card-blue-border: 2px solid var(--blue-400);
-    --memo-card-green-border: 2px solid var(--green-550);
-    --memo-card-yellow-border: 2px solid var(--yellow-550);
+    --memo-card-red-border-color: var(--red-350);
+    --memo-card-blue-border-color: var(--blue-400);
+    --memo-card-green-border-color: var(--green-550);
+    --memo-card-yellow-border-color: var(--yellow-550);
     /* ボタン色 */
     --add-button-bg: var(--steel-600);
     --add-button-hover-bg: var(--steel-700);
@@ -290,7 +290,9 @@ button {
     justify-content: space-between;
     position: relative;
     box-sizing: border-box;
-    border: var(--border); /* メモカードの境界線を追加 */
+    /* メモカードの境界線の太さとスタイルを共通化 */
+    border-width: 2px;
+    border-style: solid;
 }
 /* メモ作成日のスタイル */
 .memo-created-at {
@@ -298,17 +300,18 @@ button {
     align-self: flex-end;
 }
 
+/* メモカードの色ごとの境界線のスタイル */
 .memo-red {
-    border: var(--memo-card-red-border);
+    border-color: var(--memo-card-red-border-color);
 }
 .memo-blue {
-    border: var(--memo-card-blue-border);
+    border-color: var(--memo-card-blue-border-color);
 }
 .memo-green {
-    border: var(--memo-card-green-border);
+    border-color: var(--memo-card-green-border-color);
 }
 .memo-yellow {
-    border: var(--memo-card-yellow-border);
+    border-color: var(--memo-card-yellow-border-color);
 }
 .memo-card p {
     padding-right: 32px; /* 削除ボタンのスペースを確保 */
