@@ -263,10 +263,7 @@ button {
 
 /* 追加ボタンのスタイル */
 #add-task {
-	display: flex;
 	background-color: var(--add-button-bg);
-	font-weight: 400;
-	justify-content: center;
 	padding: 8px 16px;
 }
 
@@ -277,10 +274,7 @@ button {
 
 /* クリアボタンのスタイル */
 #clear-task-form {
-	display: flex;
 	background-color: var(--clear-button-bg);
-	font-weight: 400;
-	justify-content: center;
 	padding: 8px 16px;
 }
 
@@ -359,7 +353,6 @@ button {
 
 #add-memo {
 	background-color: var(--add-button-bg);
-	font-weight: 400;
 	width: 80px;
 	height: 30px;
 }
