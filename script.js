@@ -14,29 +14,30 @@ const priorityBadges = {
 };
 const ALLOWED_PRIORITIES = Object.keys(priorityBadges);
 
-// 次のタスクステータスを取得する関数
-const getNextStatus = (currentStatus) => {
+// 次のステータスに進む方向を表す定数
+const NEXT_DIRECTION = 1;
+// 前のステータスに戻る方向を表す定数
+const PREVIOUS_DIRECTION = -1;
+
+// 隣のステータスを求める関数
+const getAdjacentStatus = (currentStatus, direction) => {
 	const currentIndex = STATUSES.indexOf(currentStatus);
 	// 現在のステータスが有効かどうかを確認
-	if (currentIndex === -1) {
-		return null;
-	}
-	if (currentIndex === STATUSES.length - 1) {
-		return null;
-	}
-	return STATUSES[currentIndex + 1];
+	// indexが-1の場合は現在のステータスが無効なのでnullを返す
+	if (currentIndex === -1) return null;
+	const adjacentIndex = currentIndex + direction;
+	if (adjacentIndex < 0 || adjacentIndex >= STATUSES.length) return null;
+	return STATUSES[adjacentIndex];
+};
+
+// 次のタスクステータスを取得する関数
+const getNextStatus = (currentStatus) => {
+	return getAdjacentStatus(currentStatus, NEXT_DIRECTION); //nextDirection以外を渡さない
 };
 
 // 前のタスクステータスを取得
 const getPreviousStatus = (currentStatus) => {
-	const currentIndex = STATUSES.indexOf(currentStatus);
-	if (currentIndex === -1) {
-		return null;
-	}
-	if (currentIndex === 0) {
-		return null;
-	}
-	return STATUSES[currentIndex - 1];
+	return getAdjacentStatus(currentStatus, PREVIOUS_DIRECTION); //previousDirection以外を渡さない
 };
 
 // タスクを保存する関数
