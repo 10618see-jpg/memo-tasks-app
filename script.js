@@ -32,12 +32,12 @@ const getAdjacentStatus = (currentStatus, direction) => {
 
 // 次のタスクステータスを取得する関数
 const getNextStatus = (currentStatus) => {
-	return getAdjacentStatus(currentStatus, NEXT_DIRECTION); //nextDirection以外を渡さない
+	return getAdjacentStatus(currentStatus, NEXT_DIRECTION); //NEXT_DIRECTION以外を渡さない
 };
 
 // 前のタスクステータスを取得
 const getPreviousStatus = (currentStatus) => {
-	return getAdjacentStatus(currentStatus, PREVIOUS_DIRECTION); //previousDirection以外を渡さない
+	return getAdjacentStatus(currentStatus, PREVIOUS_DIRECTION); //PREVIOUS_DIRECTION以外を渡さない
 };
 
 // タスクを保存する関数
