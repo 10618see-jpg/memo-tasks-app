@@ -213,24 +213,26 @@ button {
     color: var(--label-color);
 }
 
-/* フォーム内の入力フィールドのスタイル */
+/* 入力部品の共通スタイル（タスクフォームとメモフォーム） */
 .form-group input,
-.form-group textarea {
+.form-group textarea,
+.form-group select,
+.memo-form textarea {
     background-color: var(--input-bg);
     border: var(--input-border);
     padding: 8px;
     color: var(--text-color);
-    width: 100%;
     box-sizing: border-box;
+}
+
+/* タスクフォームの入力部品の幅 */
+.form-group input,
+.form-group textarea {
+    width: 100%;
 }
 
 .form-group select {
     width: 50%;
-    background-color: var(--input-bg);
-    border: var(--input-border);
-    padding: 8px;
-    color: var(--text-color);
-    box-sizing: border-box;
 }
 
 /* フォーム内のボタンのスタイル */
@@ -324,13 +326,8 @@ button {
 }
 
 .memo-form textarea {
-    background-color: var(--input-bg);
-    border: var(--input-border);
-    padding: 8px;
-    color: var(--text-color);
     width: 230px;
     height: 230px;
-    box-sizing: border-box;
 }
 
 #add-memo {
