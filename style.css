@@ -261,10 +261,15 @@ button {
 	gap: 8px;
 }
 
+/* 追加ボタンとクリアボタンの共通スタイル */
+#add-task,
+#clear-task-form {
+	padding: 8px 16px;
+}
+
 /* 追加ボタンのスタイル */
 #add-task {
 	background-color: var(--add-button-bg);
-	padding: 8px 16px;
 }
 
 /* 追加ボタンのホバー時のスタイル */
@@ -275,7 +280,6 @@ button {
 /* クリアボタンのスタイル */
 #clear-task-form {
 	background-color: var(--clear-button-bg);
-	padding: 8px 16px;
 }
 
 /* クリアボタンのホバー時のスタイル */
