@@ -1,105 +1,95 @@
 <!doctype html>
 <html lang="ja">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <script src="script.js" defer></script>
-    <title>Memo Tasks App</title>
-  </head>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="style.css" />
+		<script src="script.js" defer></script>
+		<title>Memo Tasks App</title>
+	</head>
 
-  <body>
-    <header>
-      <h1>メモタスクアプリ</h1>
-    </header>
-    <main>
-      <!-- タスクエリア -->
-      <section id="task-area">
-        <h2>タスク一覧</h2>
-        <!-- カンバンボード -->
-        <div id="kanban-board">
-          <div class="kanban-column">
-            <h3>開始前</h3>
-            <ul data-status="todo"></ul>
-          </div>
-          <div class="kanban-column">
-            <h3>作業中</h3>
-            <ul data-status="active"></ul>
-          </div>
-          <div class="kanban-column">
-            <h3>完了</h3>
-            <ul data-status="done"></ul>
-          </div>
-        </div>
-        <!-- タスク追加フォーム -->
-        <h3>タスク追加</h3>
-        <form id="new-task-form">
-          <!-- タイトル -->
-          <div class="form-left">
-            <div class="form-group">
-              <label for="new-task-title">タイトル</label>
-              <input name="title" type="text" id="new-task-title" required />
-            </div>
-            <!-- 内容 -->
-            <div class="form-group">
-              <label for="new-task-content">内容</label>
-              <textarea
-                name="content"
-                rows="6"
-                id="new-task-content"
-                maxlength="100"
-                required
-              ></textarea>
-            </div>
-          </div>
-          <div class="form-right">
-            <!-- 期限 -->
-            <div class="form-group">
-              <label for="new-task-due-date">期限</label>
-              <input
-                name="dueDate"
-                type="date"
-                id="new-task-due-date"
-                required
-              />
-            </div>
-            <!-- 優先度 -->
-            <div class="form-group">
-              <label for="new-task-priority">優先度</label>
-              <select name="priority" id="new-task-priority">
-                <option value="low">低</option>
-                <option value="medium">中</option>
-                <option value="high">高</option>
-              </select>
-            </div>
-            <div class="form-buttons">
-              <!-- 追加ボタン -->
-              <button type="submit" id="add-task">追加</button>
-              <!-- クリアボタン -->
-              <button type="button" id="clear-task-form">クリア</button>
-            </div>
-          </div>
-        </form>
-      </section>
-      <!-- メモエリア -->
-      <section id="memo-area">
-        <h2>メモ一覧</h2>
-        <ul id="memo-list">
-          <!-- メモがここに追加されます -->
-        </ul>
-        <form id="new-memo-form">
-          <label for="new-memo">メモ追加</label>
-          <div class="memo-form">
-            <textarea
-              rows="4"
-              id="new-memo"
-              maxlength="200"
-              required
-            ></textarea>
-            <button type="submit" id="add-memo">追加</button>
-          </div>
-        </form>
-      </section>
-    </main>
-  </body>
+	<body>
+		<header>
+			<h1>メモタスクアプリ</h1>
+		</header>
+		<main>
+			<!-- タスクエリア -->
+			<section id="task-area">
+				<h2>タスク一覧</h2>
+				<!-- カンバンボード -->
+				<div id="kanban-board">
+					<div class="kanban-column">
+						<h3>開始前</h3>
+						<ul data-status="todo"></ul>
+					</div>
+					<div class="kanban-column">
+						<h3>作業中</h3>
+						<ul data-status="active"></ul>
+					</div>
+					<div class="kanban-column">
+						<h3>完了</h3>
+						<ul data-status="done"></ul>
+					</div>
+				</div>
+				<!-- タスク追加フォーム -->
+				<h3>タスク追加</h3>
+				<form id="new-task-form">
+					<!-- タイトル -->
+					<div class="form-left">
+						<div class="form-group">
+							<label for="new-task-title">タイトル</label>
+							<input name="title" type="text" id="new-task-title" required />
+						</div>
+						<!-- 内容 -->
+						<div class="form-group">
+							<label for="new-task-content">内容</label>
+							<textarea
+								name="content"
+								rows="6"
+								id="new-task-content"
+								maxlength="100"
+								required
+							></textarea>
+						</div>
+					</div>
+					<div class="form-right">
+						<!-- 期限 -->
+						<div class="form-group">
+							<label for="new-task-due-date">期限</label>
+							<input name="dueDate" type="date" id="new-task-due-date" required />
+						</div>
+						<!-- 優先度 -->
+						<div class="form-group">
+							<label for="new-task-priority">優先度</label>
+							<select name="priority" id="new-task-priority">
+								<option value="low">低</option>
+								<option value="medium">中</option>
+								<option value="high">高</option>
+							</select>
+						</div>
+						<div class="form-buttons">
+							<!-- 追加ボタン -->
+							<button type="submit" id="add-task">追加</button>
+							<!-- クリアボタン -->
+							<button type="button" id="clear-task-form">クリア</button>
+						</div>
+					</div>
+				</form>
+			</section>
+			<!-- メモエリア -->
+			<section id="memo-area">
+				<h2>メモ一覧</h2>
+				<ul id="memo-list">
+					<!-- メモがここに追加されます -->
+				</ul>
+				<form id="new-memo-form">
+					<label for="new-memo">メモ追加</label>
+					<div class="memo-form">
+						<textarea rows="4" id="new-memo" maxlength="200" required></textarea>
+						<button type="submit" id="add-memo">追加</button>
+					</div>
+				</form>
+			</section>
+		</main>
+	</body>
 </html>
