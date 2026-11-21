@@ -294,12 +294,12 @@ const removeMemo = (memoId) => {
 	render();
 };
 
+// メモ一覧を表示する領域を取得
+const memoList = document.getElementById('memo-list');
 // メモ一覧を画面に表示する関数
 const renderMemos = () => {
-	// メモ一覧を表示する領域を取得
-	const memoArea = document.getElementById('memo-list');
 	// 既存のメモをクリア
-	memoArea.replaceChildren();
+	memoList.replaceChildren();
 	// 各メモの内容と作成日をリスト項目にして追加
 	memos.forEach((memo) => {
 		// メモ本文と作成日を表示する要素を作成
@@ -312,7 +312,7 @@ const renderMemos = () => {
 		// 作成した要素をメモ項目と一覧領域に組み立てる
 		memoItem.appendChild(memoText);
 		memoItem.appendChild(memoCreatedAt);
-		memoArea.appendChild(memoItem);
+		memoList.appendChild(memoItem);
 		// メモの色と作成日の表示用スタイルを設定
 		memoItem.classList.add('memo-card', memo.color);
 		memoCreatedAt.classList.add('memo-created-at');
@@ -328,7 +328,6 @@ const renderMemos = () => {
 };
 
 // メモ削除ボタンのクリックイベントを設定
-const memoList = document.getElementById('memo-list');
 memoList.addEventListener('click', (event) => {
 	const button = event.target.closest('button.delete-button');
 	if (!button) return;
