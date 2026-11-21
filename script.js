@@ -121,6 +121,69 @@ const render = () => {
 	renderMemos();
 };
 
+// タスク 1 件のリスト項目を作る関数
+const createTaskItem = (task) => {
+	const taskItem = document.createElement('li');
+	const dueDate = document.createElement('time');
+	dueDate.textContent = `期限日: ${new Date(task.dueDate).toLocaleDateString()}`;
+	dueDate.setAttribute('datetime', task.dueDate);
+	const taskTitle = document.createElement('h4');
+	taskTitle.classList.add('task-title');
+	taskTitle.textContent = task.title;
+	taskItem.appendChild(taskTitle);
+	const taskContent = document.createElement('p');
+	taskContent.classList.add('task-content');
+	taskContent.textContent = task.content;
+	taskItem.appendChild(taskContent);
+	taskItem.appendChild(dueDate);
+	dueDate.classList.add('task-due-date');
+	// タスクの優先度に対応するラベルとスタイルを設定
+	const priorityBadge = document.createElement('span');
+	priorityBadge.textContent = priorityBadges[task.priority].label;
+	priorityBadge.classList.add(priorityBadges[task.priority].color, 'priority-badge');
+	taskItem.appendChild(priorityBadge);
+	// ボタンをdivでラップして追加
+	const buttonWrapper = document.createElement('div');
+	buttonWrapper.classList.add('button-wrapper');
+	taskItem.appendChild(buttonWrapper);
+
+	// 前のステータスがある場合のみ、戻すボタンを作成して追加
+	const previousStatus = getPreviousStatus(task.status);
+	if (previousStatus) {
+		const revertButton = document.createElement('button');
+		revertButton.textContent = '<';
+		revertButton.type = 'button';
+		revertButton.classList.add('revert-button');
+		revertButton.setAttribute(
+			'aria-label',
+			`${task.title}を${statusLabel[previousStatus].label}に戻す`
+		);
+		buttonWrapper.appendChild(revertButton);
+	}
+	// 次のステータスがある場合のみ、進めるボタンを作成して追加
+	const nextStatus = getNextStatus(task.status);
+	if (nextStatus) {
+		const advanceButton = document.createElement('button');
+		advanceButton.textContent = '>';
+		advanceButton.type = 'button';
+		advanceButton.classList.add('advance-button');
+		advanceButton.setAttribute(
+			'aria-label',
+			`${task.title}を${statusLabel[nextStatus].label}に進める`
+		);
+		buttonWrapper.appendChild(advanceButton);
+	}
+	// 削除ボタンの作成
+	const deleteButton = document.createElement('button');
+	deleteButton.textContent = '×';
+	taskItem.dataset.id = task.id;
+	deleteButton.classList.add('delete-button');
+	deleteButton.type = 'button';
+	deleteButton.setAttribute('aria-label', `${task.title}を削除する`);
+	taskItem.appendChild(deleteButton);
+	return taskItem;
+};
+
 // status別にタスクを表示する関数
 const renderTasksByStatus = (status) => {
 	// 指定されたステータスに対応するリスト要素を取得
@@ -131,66 +194,7 @@ const renderTasksByStatus = (status) => {
 	const filteredTasks = tasks.filter((task) => task.status === status);
 	// 抽出したタスクをリスト項目にして画面へ追加
 	filteredTasks.forEach((task) => {
-		// タスク名と期限を表示するリスト項目を作成
-		const taskItem = document.createElement('li');
-		const dueDate = document.createElement('time');
-		dueDate.textContent = `期限日: ${new Date(task.dueDate).toLocaleDateString()}`;
-		dueDate.setAttribute('datetime', task.dueDate);
-		const taskTitle = document.createElement('h4');
-		taskTitle.classList.add('task-title');
-		taskTitle.textContent = task.title;
-		taskItem.appendChild(taskTitle);
-		const taskContent = document.createElement('p');
-		taskContent.classList.add('task-content');
-		taskContent.textContent = task.content;
-		taskItem.appendChild(taskContent);
-		taskItem.appendChild(dueDate);
-		taskList.appendChild(taskItem);
-		dueDate.classList.add('task-due-date');
-		// タスクの優先度に対応するラベルとスタイルを設定
-		const priorityBadge = document.createElement('span');
-		priorityBadge.textContent = priorityBadges[task.priority].label;
-		priorityBadge.classList.add(priorityBadges[task.priority].color, 'priority-badge');
-		taskItem.appendChild(priorityBadge);
-		// ボタンをdivでラップして追加
-		const buttonWrapper = document.createElement('div');
-		buttonWrapper.classList.add('button-wrapper');
-		taskItem.appendChild(buttonWrapper);
-
-		// 前のステータスがある場合のみ、戻すボタンを作成して追加
-		const previousStatus = getPreviousStatus(task.status);
-		if (previousStatus) {
-			const revertButton = document.createElement('button');
-			revertButton.textContent = '<';
-			revertButton.type = 'button';
-			revertButton.classList.add('revert-button');
-			revertButton.setAttribute(
-				'aria-label',
-				`${task.title}を${statusLabel[previousStatus].label}に戻す`
-			);
-			buttonWrapper.appendChild(revertButton);
-		}
-		// 次のステータスがある場合のみ、進めるボタンを作成して追加
-		const nextStatus = getNextStatus(task.status);
-		if (nextStatus) {
-			const advanceButton = document.createElement('button');
-			advanceButton.textContent = '>';
-			advanceButton.type = 'button';
-			advanceButton.classList.add('advance-button');
-			advanceButton.setAttribute(
-				'aria-label',
-				`${task.title}を${statusLabel[nextStatus].label}に進める`
-			);
-			buttonWrapper.appendChild(advanceButton);
-		}
-		// 削除ボタンの作成
-		const deleteButton = document.createElement('button');
-		deleteButton.textContent = '×';
-		taskItem.dataset.id = task.id;
-		deleteButton.classList.add('delete-button');
-		deleteButton.type = 'button';
-		deleteButton.setAttribute('aria-label', `${task.title}を削除する`);
-		taskItem.appendChild(deleteButton);
+		taskList.appendChild(createTaskItem(task));
 	});
 };
 
