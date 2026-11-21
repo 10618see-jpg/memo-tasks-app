@@ -14,6 +14,12 @@ const priorityBadges = {
 };
 const ALLOWED_PRIORITIES = Object.keys(priorityBadges);
 
+// LocalStorageのキーを管理するオブジェクト
+const STORAGE_KEYS = {
+	tasks: 'tasks',
+	memos: 'memos',
+};
+
 // 次のステータスに進む方向を表す定数
 const NEXT_DIRECTION = 1;
 // 前のステータスに戻る方向を表す定数
@@ -42,13 +48,13 @@ const getPreviousStatus = (currentStatus) => {
 
 // タスクを保存する関数
 const saveTasks = (tasksToSave) => {
-	localStorage.setItem('tasks', JSON.stringify(tasksToSave));
+	localStorage.setItem(STORAGE_KEYS.tasks, JSON.stringify(tasksToSave));
 };
 
 // タスクを読み込む関数
 const loadTasks = () => {
 	try {
-		const stringifiedTasks = localStorage.getItem('tasks');
+		const stringifiedTasks = localStorage.getItem(STORAGE_KEYS.tasks);
 		if (!stringifiedTasks) return [];
 		const parsedTasks = JSON.parse(stringifiedTasks);
 		if (Array.isArray(parsedTasks)) return parsedTasks;
@@ -259,13 +265,13 @@ const getRandomMemoColor = () => {
 
 // メモを保存する関数
 const saveMemos = (memosToSave) => {
-	localStorage.setItem('memos', JSON.stringify(memosToSave));
+	localStorage.setItem(STORAGE_KEYS.memos, JSON.stringify(memosToSave));
 };
 
 // メモを読み込む関数
 const loadMemos = () => {
 	try {
-		const stringifiedMemos = localStorage.getItem('memos');
+		const stringifiedMemos = localStorage.getItem(STORAGE_KEYS.memos);
 		if (!stringifiedMemos) return [];
 		const parsedMemos = JSON.parse(stringifiedMemos);
 		if (Array.isArray(parsedMemos)) return parsedMemos;
