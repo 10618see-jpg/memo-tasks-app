@@ -188,7 +188,7 @@ const renderTasksByStatus = (status) => {
 	});
 };
 
-// タスク削除ボタンと次のステータスに進むボタンのクリックイベントを設定
+// カンバンボード上のボタンのクリックイベントを設定
 const kanbanBoard = document.getElementById('kanban-board');
 kanbanBoard.addEventListener('click', (event) => {
 	const deleteButton = event.target.closest('button.delete-button');
