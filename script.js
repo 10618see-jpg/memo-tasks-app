@@ -41,8 +41,8 @@ const getPreviousStatus = (currentStatus) => {
 };
 
 // タスクを保存する関数
-const saveTasks = (tasks) => {
-	localStorage.setItem('tasks', JSON.stringify(tasks));
+const saveTasks = (tasksToSave) => {
+	localStorage.setItem('tasks', JSON.stringify(tasksToSave));
 };
 
 // タスクを読み込む関数
@@ -258,8 +258,8 @@ const getRandomMemoColor = () => {
 };
 
 // メモを保存する関数
-const saveMemos = (memos) => {
-	localStorage.setItem('memos', JSON.stringify(memos));
+const saveMemos = (memosToSave) => {
+	localStorage.setItem('memos', JSON.stringify(memosToSave));
 };
 
 // メモを読み込む関数
