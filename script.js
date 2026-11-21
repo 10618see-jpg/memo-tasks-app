@@ -118,38 +118,38 @@ const render = () => {
 // status別にタスクを表示する関数
 const renderTasksByStatus = (status) => {
 	// 指定されたステータスに対応するリスト要素を取得
-	const listElement = document.querySelector(`ul[data-status='${status}']`);
+	const taskList = document.querySelector(`ul[data-status='${status}']`);
 	// 既存のタスクをクリア
-	listElement.replaceChildren();
+	taskList.replaceChildren();
 	// 指定されたステータスのタスクだけを抽出
 	const filteredTasks = tasks.filter((task) => task.status === status);
 	// 抽出したタスクをリスト項目にして画面へ追加
 	filteredTasks.forEach((task) => {
 		// タスク名と期限を表示するリスト項目を作成
-		const listItem = document.createElement('li');
+		const taskItem = document.createElement('li');
 		const dueDate = document.createElement('time');
 		dueDate.textContent = `期限日: ${new Date(task.dueDate).toLocaleDateString()}`;
 		dueDate.setAttribute('datetime', task.dueDate);
 		const taskTitle = document.createElement('h4');
 		taskTitle.classList.add('task-title');
 		taskTitle.textContent = task.title;
-		listItem.appendChild(taskTitle);
+		taskItem.appendChild(taskTitle);
 		const taskContent = document.createElement('p');
 		taskContent.classList.add('task-content');
 		taskContent.textContent = task.content;
-		listItem.appendChild(taskContent);
-		listItem.appendChild(dueDate);
-		listElement.appendChild(listItem);
+		taskItem.appendChild(taskContent);
+		taskItem.appendChild(dueDate);
+		taskList.appendChild(taskItem);
 		dueDate.classList.add('task-due-date');
 		// タスクの優先度に対応するラベルとスタイルを設定
 		const priorityBadge = document.createElement('span');
 		priorityBadge.textContent = priorityBadges[task.priority].label;
 		priorityBadge.classList.add(priorityBadges[task.priority].color, 'priority-badge');
-		listItem.appendChild(priorityBadge);
+		taskItem.appendChild(priorityBadge);
 		// ボタンをdivでラップして追加
 		const buttonWrapper = document.createElement('div');
 		buttonWrapper.classList.add('button-wrapper');
-		listItem.appendChild(buttonWrapper);
+		taskItem.appendChild(buttonWrapper);
 
 		// 前のステータスがある場合のみ、戻すボタンを作成して追加
 		const previousStatus = getPreviousStatus(task.status);
@@ -180,11 +180,11 @@ const renderTasksByStatus = (status) => {
 		// 削除ボタンの作成
 		const deleteButton = document.createElement('button');
 		deleteButton.textContent = '×';
-		listItem.dataset.id = task.id;
+		taskItem.dataset.id = task.id;
 		deleteButton.classList.add('delete-button');
 		deleteButton.type = 'button';
 		deleteButton.setAttribute('aria-label', `${task.title}を削除する`);
-		listItem.appendChild(deleteButton);
+		taskItem.appendChild(deleteButton);
 	});
 };
 
@@ -195,12 +195,12 @@ kanbanBoard.addEventListener('click', (event) => {
 	const advanceButton = event.target.closest('button.advance-button');
 	const revertButton = event.target.closest('button.revert-button');
 	if (!deleteButton && !advanceButton && !revertButton) return;
-	const taskListItem = event.target.closest('li');
-	const taskId = Number(taskListItem.dataset.id);
+	const taskItem = event.target.closest('li');
+	const taskId = Number(taskItem.dataset.id);
 	if (deleteButton) {
-		const taskTitle = taskListItem.querySelector('.task-title').textContent;
-		const isOK = window.confirm(`${taskTitle}を削除しますか？`);
-		if (isOK) {
+		const taskTitleText = taskItem.querySelector('.task-title').textContent;
+		const isDeleteConfirmed = window.confirm(`${taskTitleText}を削除しますか？`);
+		if (isDeleteConfirmed) {
 			removeTask(taskId);
 		}
 	} else if (advanceButton) {
@@ -331,10 +331,10 @@ const renderMemos = () => {
 memoList.addEventListener('click', (event) => {
 	const button = event.target.closest('button.delete-button');
 	if (!button) return;
-	const memoListItem = button.closest('li');
-	const memoId = Number(memoListItem.dataset.id);
-	const isOK = window.confirm('メモを削除しますか？');
-	if (isOK) {
+	const memoItem = button.closest('li');
+	const memoId = Number(memoItem.dataset.id);
+	const isDeleteConfirmed = window.confirm('メモを削除しますか？');
+	if (isDeleteConfirmed) {
 		removeMemo(memoId);
 	}
 });
