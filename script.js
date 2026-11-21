@@ -48,9 +48,9 @@ const saveTasks = (tasks) => {
 // タスクを読み込む関数
 const loadTasks = () => {
 	try {
-		const taskItem = localStorage.getItem('tasks');
-		if (!taskItem) return [];
-		const parsedTasks = JSON.parse(taskItem);
+		const stringifiedTasks = localStorage.getItem('tasks');
+		if (!stringifiedTasks) return [];
+		const parsedTasks = JSON.parse(stringifiedTasks);
 		if (Array.isArray(parsedTasks)) return parsedTasks;
 		console.error('LocalStorageタスクデータが不正です:', parsedTasks);
 		return [];
@@ -265,9 +265,9 @@ const saveMemos = (memos) => {
 // メモを読み込む関数
 const loadMemos = () => {
 	try {
-		const memoItem = localStorage.getItem('memos');
-		if (!memoItem) return [];
-		const parsedMemos = JSON.parse(memoItem);
+		const stringifiedMemos = localStorage.getItem('memos');
+		if (!stringifiedMemos) return [];
+		const parsedMemos = JSON.parse(stringifiedMemos);
 		if (Array.isArray(parsedMemos)) return parsedMemos;
 		console.error('LocalStorageのメモデータが不正です:', parsedMemos);
 		return [];
