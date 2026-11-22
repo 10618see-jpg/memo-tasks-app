@@ -57,13 +57,31 @@ const saveTasks = (tasksToSave) => {
 	localStorage.setItem(STORAGE_KEYS.tasks, JSON.stringify(tasksToSave));
 };
 
+// タスクの検証関数
+const isValidTask = (task) => {
+	if (!task) return false;
+	if (!Number.isFinite(task.id)) return false;
+	if (!STATUSES.includes(task.status)) return false;
+	if (!ALLOWED_PRIORITIES.includes(task.priority)) return false;
+	return true;
+};
+
 // タスクを読み込む関数
 const loadTasks = () => {
 	try {
 		const stringifiedTasks = localStorage.getItem(STORAGE_KEYS.tasks);
 		if (!stringifiedTasks) return [];
 		const parsedTasks = JSON.parse(stringifiedTasks);
-		if (Array.isArray(parsedTasks)) return parsedTasks;
+		if (Array.isArray(parsedTasks)) {
+			// 配列内の各タスクが有効かどうかを確認
+			const validTasks = parsedTasks.filter(isValidTask);
+			if (validTasks.length !== parsedTasks.length) {
+				console.warn(
+					`無効なタスクを${parsedTasks.length - validTasks.length}件除外しました`
+				);
+			}
+			return validTasks;
+		}
 		console.error('LocalStorageタスクデータが不正です:', parsedTasks);
 		return [];
 	} catch (error) {
@@ -294,13 +312,30 @@ const saveMemos = (memosToSave) => {
 	localStorage.setItem(STORAGE_KEYS.memos, JSON.stringify(memosToSave));
 };
 
+// メモの検証関数
+const isValidMemo = (memo) => {
+	if (!memo) return false;
+	if (!Number.isFinite(memo.id)) return false;
+	if (typeof memo.content !== 'string') return false;
+	// 色は「空でなく、空白を含まない文字列」であれば許可する（classList.addで落ちないため）
+	if (typeof memo.color !== 'string' || memo.color === '' || /\s/.test(memo.color)) return false;
+	return true;
+};
+
 // メモを読み込む関数
 const loadMemos = () => {
 	try {
 		const stringifiedMemos = localStorage.getItem(STORAGE_KEYS.memos);
 		if (!stringifiedMemos) return [];
 		const parsedMemos = JSON.parse(stringifiedMemos);
-		if (Array.isArray(parsedMemos)) return parsedMemos;
+		if (Array.isArray(parsedMemos)) {
+			// 配列内の各メモが有効かどうかを確認
+			const validMemos = parsedMemos.filter(isValidMemo);
+			if (validMemos.length !== parsedMemos.length) {
+				console.warn(`無効なメモを${parsedMemos.length - validMemos.length}件除外しました`);
+			}
+			return validMemos;
+		}
 		console.error('LocalStorageのメモデータが不正です:', parsedMemos);
 		return [];
 	} catch (error) {
