@@ -123,31 +123,41 @@ const render = () => {
 
 // タスク 1 件のリスト項目を作る関数
 const createTaskItem = (task) => {
+	// タスク項目の作成
 	const taskItem = document.createElement('li');
+	taskItem.dataset.id = task.id;
+
+	// タスクタイトルの作成
+	const taskTitle = document.createElement('h4');
+	taskTitle.textContent = task.title;
+	taskTitle.classList.add('task-title');
+	taskItem.appendChild(taskTitle);
+
+	// タスク内容の作成
+	const taskContent = document.createElement('p');
+	taskContent.textContent = task.content;
+	taskContent.classList.add('task-content');
+	taskItem.appendChild(taskContent);
+
+	// 期限日の作成
 	const dueDate = document.createElement('time');
 	dueDate.textContent = `期限日: ${new Date(task.dueDate).toLocaleDateString()}`;
 	dueDate.setAttribute('datetime', task.dueDate);
-	const taskTitle = document.createElement('h4');
-	taskTitle.classList.add('task-title');
-	taskTitle.textContent = task.title;
-	taskItem.appendChild(taskTitle);
-	const taskContent = document.createElement('p');
-	taskContent.classList.add('task-content');
-	taskContent.textContent = task.content;
-	taskItem.appendChild(taskContent);
-	taskItem.appendChild(dueDate);
 	dueDate.classList.add('task-due-date');
-	// タスクの優先度に対応するラベルとスタイルを設定
+	taskItem.appendChild(dueDate);
+
+	// 優先度バッジの作成
 	const priorityBadge = document.createElement('span');
 	priorityBadge.textContent = priorityBadges[task.priority].label;
 	priorityBadge.classList.add(priorityBadges[task.priority].color, 'priority-badge');
 	taskItem.appendChild(priorityBadge);
-	// ボタンをdivでラップして追加
+
+	// ボタンラッパーの作成
 	const buttonWrapper = document.createElement('div');
 	buttonWrapper.classList.add('button-wrapper');
 	taskItem.appendChild(buttonWrapper);
 
-	// 前のステータスがある場合のみ、戻すボタンを作成して追加
+	// 戻すボタンの作成
 	const previousStatus = getPreviousStatus(task.status);
 	if (previousStatus) {
 		const revertButton = document.createElement('button');
@@ -160,7 +170,8 @@ const createTaskItem = (task) => {
 		);
 		buttonWrapper.appendChild(revertButton);
 	}
-	// 次のステータスがある場合のみ、進めるボタンを作成して追加
+
+	// 進めるボタンの作成
 	const nextStatus = getNextStatus(task.status);
 	if (nextStatus) {
 		const advanceButton = document.createElement('button');
@@ -173,10 +184,10 @@ const createTaskItem = (task) => {
 		);
 		buttonWrapper.appendChild(advanceButton);
 	}
+
 	// 削除ボタンの作成
 	const deleteButton = document.createElement('button');
 	deleteButton.textContent = '×';
-	taskItem.dataset.id = task.id;
 	deleteButton.classList.add('delete-button');
 	deleteButton.type = 'button';
 	deleteButton.setAttribute('aria-label', `${task.title}を削除する`);
