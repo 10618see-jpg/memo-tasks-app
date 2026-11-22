@@ -326,6 +326,33 @@ const removeMemo = (memoId) => {
 	render();
 };
 
+// メモ1件のリスト項目を作る関数
+const createMemoItem = (memo) => {
+	// メモ項目の要素を作成
+	const memoItem = document.createElement('li');
+	memoItem.dataset.id = memo.id;
+	// メモの文章を表示する要素を作成
+	const memoText = document.createElement('p');
+	memoText.textContent = memo.content;
+	memoItem.appendChild(memoText);
+	// メモの作成日を表示する要素を作成
+	const memoCreatedAt = document.createElement('time');
+	memoCreatedAt.textContent = `作成日: ${new Date(memo.createdAt).toLocaleDateString()}`;
+	memoCreatedAt.setAttribute('datetime', memo.createdAt);
+	memoCreatedAt.classList.add('memo-created-at');
+	memoItem.appendChild(memoCreatedAt);
+	// メモ項目に色とスタイルを設定
+	memoItem.classList.add('memo-card', memo.color);
+	// メモ項目に削除ボタンを作成
+	const deleteButton = createButton({
+		text: '×',
+		className: 'delete-button',
+		ariaLabel: `${memo.content.slice(0, 10)}を削除する`, // aria-labelにメモ内容の先頭10文字を設定
+	});
+	memoItem.appendChild(deleteButton);
+	return memoItem;
+};
+
 // メモ一覧を表示する領域を取得
 const memoList = document.getElementById('memo-list');
 // メモ一覧を画面に表示する関数
@@ -334,28 +361,9 @@ const renderMemos = () => {
 	memoList.replaceChildren();
 	// 各メモの内容と作成日をリスト項目にして追加
 	memos.forEach((memo) => {
-		// メモ本文と作成日を表示する要素を作成
-		const memoItem = document.createElement('li');
-		memoItem.dataset.id = memo.id;
-		const memoText = document.createElement('p');
-		memoText.textContent = memo.content;
-		const memoCreatedAt = document.createElement('time');
-		memoCreatedAt.textContent = `作成日: ${new Date(memo.createdAt).toLocaleDateString()}`;
-		memoCreatedAt.setAttribute('datetime', memo.createdAt);
-		// 作成した要素をメモ項目と一覧領域に組み立てる
-		memoItem.appendChild(memoText);
-		memoItem.appendChild(memoCreatedAt);
+		// メモ項目を作成して一覧に追加
+		const memoItem = createMemoItem(memo);
 		memoList.appendChild(memoItem);
-		// メモの色と作成日の表示用スタイルを設定
-		memoItem.classList.add('memo-card', memo.color);
-		memoCreatedAt.classList.add('memo-created-at');
-		// 削除ボタンの作成
-		const deleteButton = createButton({
-			text: '×',
-			className: 'delete-button',
-			ariaLabel: `${memo.content.slice(0, 10)}を削除する`, // aria-labelにメモ内容の先頭10文字を設定
-		});
-		memoItem.appendChild(deleteButton);
 	});
 };
 
