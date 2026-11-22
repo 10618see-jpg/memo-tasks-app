@@ -6,6 +6,12 @@ const statusLabel = {
 };
 const STATUSES = Object.keys(statusLabel);
 
+// ステータスの役割（最初・完了）と、実際の値の対応
+const STATUS_ROLES = {
+	initial: 'todo',
+	completed: 'done',
+};
+
 // 優先度バッジのオブジェクト
 const priorityBadges = {
 	low: { label: '低', color: 'priority-low' },
@@ -89,7 +95,8 @@ const advanceTask = (taskId) => {
 	if (!task) return;
 	const nextStatus = getNextStatus(task.status);
 	if (!nextStatus) return;
-	const completedAt = nextStatus === 'done' ? new Date().toISOString() : task.completedAt;
+	const completedAt =
+		nextStatus === STATUS_ROLES.completed ? new Date().toISOString() : task.completedAt;
 	tasks = tasks.map((t) =>
 		t.id === taskId ? { ...t, status: nextStatus, completedAt: completedAt } : t
 	);
@@ -261,7 +268,7 @@ taskForm.addEventListener('submit', (event) => {
 		title: taskData.title.trim(),
 		content: taskData.content.trim(),
 		priority: taskData.priority,
-		status: 'todo',
+		status: STATUS_ROLES.initial,
 		completedAt: null,
 	};
 	// 新しいタスクを追加
