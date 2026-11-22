@@ -342,12 +342,12 @@ const renderMemos = () => {
 		memoItem.classList.add('memo-card', memo.color);
 		memoCreatedAt.classList.add('memo-created-at');
 		// 削除ボタンの作成
-		const deleteButton = document.createElement('button');
-		deleteButton.textContent = '×';
+		const deleteButton = createButton({
+			text: '×',
+			className: 'delete-button',
+			ariaLabel: `${memo.content.slice(0, 10)}を削除する`, // aria-labelにメモ内容の先頭10文字を設定
+		});
 		memoItem.dataset.id = memo.id;
-		deleteButton.classList.add('delete-button');
-		deleteButton.type = 'button';
-		deleteButton.setAttribute('aria-label', `${memo.content.slice(0, 10)}を削除する`); // aria-labelにメモ内容の先頭10文字を設定
 		memoItem.appendChild(deleteButton);
 	});
 };
