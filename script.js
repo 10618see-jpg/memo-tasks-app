@@ -329,6 +329,7 @@ const renderMemos = () => {
 	memos.forEach((memo) => {
 		// メモ本文と作成日を表示する要素を作成
 		const memoItem = document.createElement('li');
+		memoItem.dataset.id = memo.id;
 		const memoText = document.createElement('p');
 		memoText.textContent = memo.content;
 		const memoCreatedAt = document.createElement('time');
@@ -347,7 +348,6 @@ const renderMemos = () => {
 			className: 'delete-button',
 			ariaLabel: `${memo.content.slice(0, 10)}を削除する`, // aria-labelにメモ内容の先頭10文字を設定
 		});
-		memoItem.dataset.id = memo.id;
 		memoItem.appendChild(deleteButton);
 	});
 };
