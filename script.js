@@ -121,6 +121,16 @@ const render = () => {
 	renderMemos();
 };
 
+// ボタン1つを作成する関数
+const createButton = ({ text, className, ariaLabel }) => {
+	const button = document.createElement('button');
+	button.textContent = text;
+	button.type = 'button';
+	button.classList.add(className);
+	button.setAttribute('aria-label', ariaLabel);
+	return button;
+};
+
 // タスク 1 件のリスト項目を作る関数
 const createTaskItem = (task) => {
 	// タスク項目の作成
@@ -160,37 +170,31 @@ const createTaskItem = (task) => {
 	// 戻すボタンの作成
 	const previousStatus = getPreviousStatus(task.status);
 	if (previousStatus) {
-		const revertButton = document.createElement('button');
-		revertButton.textContent = '<';
-		revertButton.type = 'button';
-		revertButton.classList.add('revert-button');
-		revertButton.setAttribute(
-			'aria-label',
-			`${task.title}を${statusLabel[previousStatus].label}に戻す`
-		);
+		const revertButton = createButton({
+			text: '<',
+			className: 'revert-button',
+			ariaLabel: `${task.title}を${statusLabel[previousStatus].label}に戻す`,
+		});
 		buttonWrapper.appendChild(revertButton);
 	}
 
 	// 進めるボタンの作成
 	const nextStatus = getNextStatus(task.status);
 	if (nextStatus) {
-		const advanceButton = document.createElement('button');
-		advanceButton.textContent = '>';
-		advanceButton.type = 'button';
-		advanceButton.classList.add('advance-button');
-		advanceButton.setAttribute(
-			'aria-label',
-			`${task.title}を${statusLabel[nextStatus].label}に進める`
-		);
+		const advanceButton = createButton({
+			text: '>',
+			className: 'advance-button',
+			ariaLabel: `${task.title}を${statusLabel[nextStatus].label}に進める`,
+		});
 		buttonWrapper.appendChild(advanceButton);
 	}
 
 	// 削除ボタンの作成
-	const deleteButton = document.createElement('button');
-	deleteButton.textContent = '×';
-	deleteButton.classList.add('delete-button');
-	deleteButton.type = 'button';
-	deleteButton.setAttribute('aria-label', `${task.title}を削除する`);
+	const deleteButton = createButton({
+		text: '×',
+		className: 'delete-button',
+		ariaLabel: `${task.title}を削除する`,
+	});
 	taskItem.appendChild(deleteButton);
 	return taskItem;
 };
