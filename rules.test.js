@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert';
-import { getPreviousStatus, getNextStatus, isValidTask } from './rules.js';
+import { getPreviousStatus, getNextStatus, isValidTask, isValidMemo } from './rules.js';
 
 // getNextStatusのテスト
 test('todoの値を渡すと次のステータスがactiveになる', () => {
@@ -78,5 +78,52 @@ const taskCases = [
 taskCases.forEach(({ name, task, expected }) => {
 	test(name, () => {
 		assert.strictEqual(isValidTask(task), expected);
+	});
+});
+
+// isValidMemoのテスト
+const memoCases = [
+	{
+		name: '正しいメモはtrueになる',
+		memo: { id: 1, content: 'メモ', color: 'red' },
+		expected: true,
+	},
+	{ name: 'nullはfalseになる', memo: null, expected: false },
+	{ name: '空のオブジェクトはfalseになる', memo: {}, expected: false },
+	{
+		name: 'idがNaNだとfalseになる',
+		memo: { id: NaN, content: 'メモ', color: 'red' },
+		expected: false,
+	},
+	{
+		name: 'idが文字列だとfalseになる',
+		memo: { id: 'xxx', content: 'メモ', color: 'red' },
+		expected: false,
+	},
+	{
+		name: 'contentが文字列でないとfalseになる',
+		memo: { id: 1, content: 123, color: 'red' },
+		expected: false,
+	},
+	{
+		name: 'colorがないとfalseになる',
+		memo: { id: 1, content: 'メモ' },
+		expected: false,
+	},
+	{
+		name: 'colorが空文字だとfalseになる',
+		memo: { id: 1, content: 'メモ', color: '' },
+		expected: false,
+	},
+	{
+		name: 'colorに空白が入っているとfalseになる',
+		memo: { id: 1, content: 'メモ', color: ' ' },
+		expected: false,
+	},
+];
+
+memoCases.forEach(({ name, memo, expected }) => {
+	test(name, () => {
+		assert.strictEqual(isValidMemo(memo), expected);
 	});
 });
