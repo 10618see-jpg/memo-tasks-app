@@ -6,7 +6,7 @@
 
 ## 公開URL
 
-公開後に追記します。
+https://10618see-jpg.github.io/memo-tasks-app/
 
 ## 主な機能
 
