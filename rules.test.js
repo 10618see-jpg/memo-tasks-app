@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert';
-import { getPreviousStatus, getNextStatus } from './rules.js';
+import { getPreviousStatus, getNextStatus, isValidTask } from './rules.js';
 
 // getNextStatusのテスト
 test('todoの値を渡すと次のステータスがactiveになる', () => {
@@ -42,4 +42,41 @@ test('不正な文字列を渡すと前のステータスがnullになる', () =
 
 test('想定外の値を渡すと前のステータスがnullになる', () => {
 	assert.strictEqual(getPreviousStatus(null), null);
+});
+
+// isValidTaskのテスト
+const taskCases = [
+	{
+		name: '正しいタスクはtrueになる',
+		task: { id: 1, status: 'todo', priority: 'low' },
+		expected: true,
+	},
+	{ name: 'nullはfalseになる', task: null, expected: false },
+	{ name: '空のオブジェクトはfalseになる', task: {}, expected: false },
+	{
+		name: 'idがNaNだとfalseになる',
+		task: { id: NaN, status: 'active', priority: 'low' },
+		expected: false,
+	},
+	{
+		name: 'idが文字列だとfalseになる',
+		task: { id: 'xxx', status: 'done', priority: 'low' },
+		expected: false,
+	},
+	{
+		name: 'statusが知らない値だとfalseになる',
+		task: { id: 3, status: 'xxx', priority: 'low' },
+		expected: false,
+	},
+	{
+		name: 'priorityが知らない値だとfalseになる',
+		task: { id: 4, status: 'todo', priority: 'xxx' },
+		expected: false,
+	},
+];
+
+taskCases.forEach(({ name, task, expected }) => {
+	test(name, () => {
+		assert.strictEqual(isValidTask(task), expected);
+	});
 });
