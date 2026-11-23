@@ -1,363 +1,391 @@
 /* スタイルシート全体の設定 */
 :root {
-    /* カラー素材 */
-    --gray-0: #ffffff;
-    --gray-50: #f0f0f0;
-    --gray-200: #cccccc;
-    --gray-450: #8a8a8a;
-    --gray-500: #6b7280;
-    --gray-600: #5c6370;
-    --gray-850: #2a2a2a;
-    --red-100: #f5d6d9;
-    --red-350: #ce7e7e;
-    --red-500: #dc3545;
-    --red-600: #c82333;
-    --red-750: #6c131c;
-    --blue-400: #6b97c7;
-    --green-100: #d6f5dd;
-    --green-550: #40a840;
-    --green-750: #136c28;
-    --yellow-550: #ac9141;
-    --orange-100: #f5e5d6;
-    --orange-750: #793e06;
-    --steel-600: #3f6f96;
-    --steel-700: #36648b;
-    /* 背景色 */
-    --page-bg: var(--gray-0);
-    --area-bg: var(--gray-50);
-    --card-bg: var(--gray-0);
-    --input-bg: var(--gray-0);
-    --header-bg: var(--steel-600);
-    /* テキスト色 */
-    --label-color: var(--gray-600);
-    --text-color: var(--gray-850);
-    --accent-text-color: var(--gray-0);
-    /* ボーダー */
-    --border: 1px solid var(--gray-200);
-    --input-border: 1px solid var(--gray-450);
-    /* メモカードのボーダー色 */
-    --memo-card-red-border: 2px solid var(--red-350);
-    --memo-card-blue-border: 2px solid var(--blue-400);
-    --memo-card-green-border: 2px solid var(--green-550);
-    --memo-card-yellow-border: 2px solid var(--yellow-550);
-    /* ボタン色 */
-    --add-button-bg: var(--steel-600);
-    --add-button-hover-bg: var(--steel-700);
-    --clear-button-bg: var(--red-500);
-    --clear-button-hover-bg: var(--red-600);
-    --delete-button-bg: var(--red-500);
-    --delete-button-hover-bg: var(--red-600);
-    --move-button-bg: var(--gray-600);
-    --move-button-hover-bg: var(--gray-500);
-    /* 優先度バッジ色 */
-    --priority-badge-low-bg: var(--green-100);
-    --priority-badge-medium-bg: var(--orange-100);
-    --priority-badge-high-bg: var(--red-100);
-    /* 優先度バッジのテキスト色 */
-    --priority-badge-low-color: var(--green-750);
-    --priority-badge-medium-color: var(--orange-750);
-    --priority-badge-high-color: var(--red-750);
+	/* カラー素材 */
+	--gray-0: #ffffff;
+	--gray-50: #f0f0f0;
+	--gray-200: #cccccc;
+	--gray-450: #8a8a8a;
+	--gray-500: #6b7280;
+	--gray-600: #5c6370;
+	--gray-850: #2a2a2a;
+	--red-100: #f5d6d9;
+	--red-350: #ce7e7e;
+	--red-500: #dc3545;
+	--red-600: #c82333;
+	--red-750: #6c131c;
+	--blue-400: #6b97c7;
+	--green-100: #d6f5dd;
+	--green-550: #40a840;
+	--green-750: #136c28;
+	--yellow-550: #ac9141;
+	--orange-100: #f5e5d6;
+	--orange-750: #793e06;
+	--steel-600: #3f6f96;
+	--steel-700: #36648b;
+	/* 背景色 */
+	--page-bg: var(--gray-0);
+	--area-bg: var(--gray-50);
+	--card-bg: var(--gray-0);
+	--input-bg: var(--gray-0);
+	--header-bg: var(--steel-600);
+	/* テキスト色 */
+	--label-color: var(--gray-600);
+	--text-color: var(--gray-850);
+	--accent-text-color: var(--gray-0);
+	/* ボーダー */
+	--border: 1px solid var(--gray-200);
+	--input-border: 1px solid var(--gray-450);
+	/* メモカードのボーダー色 */
+	--memo-card-red-border-color: var(--red-350);
+	--memo-card-blue-border-color: var(--blue-400);
+	--memo-card-green-border-color: var(--green-550);
+	--memo-card-yellow-border-color: var(--yellow-550);
+	/* ボタン色 */
+	--add-button-bg: var(--steel-600);
+	--add-button-hover-bg: var(--steel-700);
+	--clear-button-bg: var(--red-500);
+	--clear-button-hover-bg: var(--red-600);
+	--delete-button-bg: var(--red-500);
+	--delete-button-hover-bg: var(--red-600);
+	--move-button-bg: var(--gray-600);
+	--move-button-hover-bg: var(--gray-500);
+	/* 優先度バッジ色 */
+	--priority-badge-low-bg: var(--green-100);
+	--priority-badge-medium-bg: var(--orange-100);
+	--priority-badge-high-bg: var(--red-100);
+	/* 優先度バッジのテキスト色 */
+	--priority-badge-low-color: var(--green-750);
+	--priority-badge-medium-color: var(--orange-750);
+	--priority-badge-high-color: var(--red-750);
 }
+
 body {
-    margin: 0;
-    font-family:
-    "Helvetica Neue",
-    Arial,
-    "Hiragino Kaku Gothic ProN",
-    "Hiragino Sans",
-    "Noto Sans JP",
-    sans-serif;
-    color: var(--text-color);
-    background-color: var(--page-bg);
+	margin: 0;
+	font-family:
+		'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Noto Sans JP',
+		sans-serif;
+	color: var(--text-color);
+	background-color: var(--page-bg);
 }
-textarea, input, select, button {
-  font-family: inherit; /* 親要素のフォントを継承 */
-  resize: none; /* 縦方向と横方向の拡大を防ぐ */
-  font-size: inherit; /* 親要素のフォントサイズを継承 */
+
+textarea,
+input,
+select,
+button {
+	font-family: inherit;
+	/* 親要素のフォントを継承 */
+	font-size: inherit;
+	/* 親要素のフォントサイズを継承 */
 }
+
+textarea {
+	resize: none;
+	/* 縦方向と横方向の拡大を防ぐ */
+}
+
 header {
-    background-color: var(--header-bg);
-    padding: 16px 0px;
-    color: var(--accent-text-color);
+	background-color: var(--header-bg);
+	padding: 16px 0px;
+	color: var(--accent-text-color);
 }
+
 header h1 {
-    margin: 0px 16px;
+	margin: 0px 16px;
 }
 
 /* 各エリアのスタイル */
-#task-area, #memo-area {
-    margin: 16px;
+#task-area,
+#memo-area {
+	margin: 16px;
 }
 
 /* カンバンボードのスタイル */
 #kanban-board {
-    display: flex;
-    gap: 16px;
+	display: flex;
+	gap: 16px;
 }
 
 /* ボードカラムのスタイル */
 .kanban-column {
-    background-color: var(--area-bg);
-    padding: 16px;
-    flex: 1;
-    border: var(--border);
+	background-color: var(--area-bg);
+	padding: 16px;
+	flex: 1;
+	border: var(--border);
 }
 
 /* ボードカラム内のリストのスタイル */
 .kanban-column ul {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    padding: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	padding: 0;
 }
 
 /* タスクカードのスタイル */
 .kanban-column li {
-    background-color: var(--card-bg);
-    padding: 16px;
-    list-style: none;
-    flex-direction: column;
-    display: flex;
-    position: relative;
-    border: var(--border);
+	background-color: var(--card-bg);
+	padding: 16px;
+	list-style: none;
+	flex-direction: column;
+	display: flex;
+	position: relative;
+	border: var(--border);
 }
 
 .task-due-date {
-    font-size: 12px;
-    color: var(--text-color);
-    align-self: flex-end;
+	font-size: 12px;
+	align-self: flex-end;
 }
 
 /* タスクタイトルのスタイル */
 .task-title {
-    margin: 0;
-    font-size: 16px;
-    font-weight: normal;
-    padding-right: 24px; /* 削除ボタンのスペース確保 */
+	margin: 0;
+	font-size: 16px;
+	font-weight: normal;
+	padding-right: 24px;
+	/* 削除ボタンのスペース確保 */
 }
 
 /* ボタンの共通スタイル */
 button {
-    cursor: pointer;
-    border: none; /* ボタンのデフォルト境界線を削除 */
-    color: var(--accent-text-color);
+	cursor: pointer;
+	border: none;
+	/* ボタンのデフォルト境界線を削除 */
+	color: var(--accent-text-color);
 }
 
 /* 削除ボタンのスタイル */
 .delete-button {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 24px;
-    height: 24px;
-    background-color: var(--delete-button-bg);
+	position: absolute;
+	top: 8px;
+	right: 8px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 24px;
+	height: 24px;
+	background-color: var(--delete-button-bg);
 }
+
 /* 削除ボタンのホバー時のスタイル */
 .delete-button:hover {
-    background-color: var(--delete-button-hover-bg);
+	background-color: var(--delete-button-hover-bg);
 }
+
 /* ボタンラッパーのスタイル */
 .button-wrapper {
-    display: flex;
-    gap: 8px;
+	display: flex;
+	gap: 8px;
 }
+
 /* ステータス移動ボタンの共通スタイル */
 .advance-button,
 .revert-button {
-    padding: 4px;
-    margin: 8px 0px; /* ボタン間のスペース確保 */
-    background-color: var(--move-button-bg);
-    flex: 1; /* ボタンラッパー内でボタンを均等に配置 */
+	padding: 4px;
+	margin: 8px 0px;
+	/* ボタン間のスペース確保 */
+	background-color: var(--move-button-bg);
+	flex: 1;
+	/* ボタンラッパー内でボタンを均等に配置 */
 }
+
 /* ステータス移動ボタンのホバースタイル */
 .advance-button:hover,
 .revert-button:hover {
-    background-color: var(--move-button-hover-bg);
+	background-color: var(--move-button-hover-bg);
 }
 
 /* 新しいタスク追加フォームのスタイル */
 #new-task-form {
-    background-color: var(--area-bg);
-    display: flex;
-    gap: 16px;
-    padding: 16px; /* フォーム内の余白を確保 */
-    border: var(--border); /* フォームの境界線を追加 */
+	background-color: var(--area-bg);
+	display: flex;
+	gap: 16px;
+	padding: 16px;
+	/* フォーム内の余白を確保 */
+	border: var(--border);
+	/* フォームの境界線を追加 */
 }
+
 /* フォーム内共通のスタイル */
 .form-group {
-    display: flex;
-    flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 
 /* フォーム左側のスタイル */
 .form-left {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    flex: 3;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	flex: 3;
 }
+
 /* フォーム右側のスタイル */
 .form-right {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    flex: 1;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	flex: 1;
 }
 
 /* フォーム内のラベルのスタイル */
 .form-group label {
-    color: var(--label-color);
+	color: var(--label-color);
 }
 
-/* フォーム内の入力フィールドのスタイル */
+/* 入力部品の共通スタイル（タスクフォームとメモフォーム） */
+.form-group input,
+.form-group textarea,
+.form-group select,
+.memo-form textarea {
+	background-color: var(--input-bg);
+	border: var(--input-border);
+	padding: 8px;
+	color: var(--text-color);
+	box-sizing: border-box;
+}
+
+/* タスクフォームの入力部品の幅 */
 .form-group input,
 .form-group textarea {
-    background-color: var(--input-bg);
-    border: var(--input-border);
-    padding: 8px;
-    color: var(--text-color);
-    width: 100%;
-    box-sizing: border-box;
+	width: 100%;
 }
 
 .form-group select {
-    width: 50%;
-    background-color: var(--input-bg);
-    border: var(--input-border);
-    padding: 8px;
-    color: var(--text-color);
-    box-sizing: border-box;
+	width: 50%;
 }
 
 /* フォーム内のボタンのスタイル */
 .form-buttons {
-    display: flex;
-    gap: 8px;
+	display: flex;
+	gap: 8px;
+}
+
+/* 追加ボタンとクリアボタンの共通スタイル */
+#add-task,
+#clear-task-form {
+	padding: 8px 16px;
 }
 
 /* 追加ボタンのスタイル */
 #add-task {
-    display: flex;
-    background-color: var(--add-button-bg);
-    font-weight: 400;
-    justify-content: center;
-    padding: 8px 16px;
+	background-color: var(--add-button-bg);
 }
+
 /* 追加ボタンのホバー時のスタイル */
 #add-task:hover {
-    background-color: var(--add-button-hover-bg);
+	background-color: var(--add-button-hover-bg);
 }
+
 /* クリアボタンのスタイル */
 #clear-task-form {
-    display: flex;
-    background-color: var(--clear-button-bg);
-    font-weight: 400;
-    justify-content: center;
-    padding: 8px 16px;
+	background-color: var(--clear-button-bg);
 }
+
 /* クリアボタンのホバー時のスタイル */
 #clear-task-form:hover {
-    background-color: var(--clear-button-hover-bg);
+	background-color: var(--clear-button-hover-bg);
 }
-
-
 
 /* メモエリアのスタイル */
-
 /* メモリストのスタイル */
 #memo-list {
-    background-color: var(--area-bg);
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    padding: 16px;
-    border: var(--border); /* メモリストの境界線を追加 */
-
+	background-color: var(--area-bg);
+	display: flex;
+	flex-wrap: wrap;
+	gap: 16px;
+	padding: 16px;
+	border: var(--border);
+	/* メモリストの境界線を追加 */
 }
+
 /* メモアイテムのスタイル */
 .memo-card {
-    background-color: var(--card-bg);
-    padding: 8px;
-    list-style: none;
-    aspect-ratio: 1 / 1;
-    width: 230px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    position: relative;
-    box-sizing: border-box;
-    border: var(--border); /* メモカードの境界線を追加 */
-}
-/* メモ作成日のスタイル */
-.memo-created-at {
-    font-size: 12px;
-    align-self: flex-end;
+	background-color: var(--card-bg);
+	padding: 8px;
+	list-style: none;
+	aspect-ratio: 1 / 1;
+	width: 230px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	position: relative;
+	box-sizing: border-box;
+	/* メモカードの境界線の太さとスタイルを共通化 */
+	border-width: 2px;
+	border-style: solid;
 }
 
+/* メモ作成日のスタイル */
+.memo-created-at {
+	font-size: 12px;
+	align-self: flex-end;
+}
+
+/* メモカードの色ごとの境界線のスタイル */
 .memo-red {
-    border: var(--memo-card-red-border);
+	border-color: var(--memo-card-red-border-color);
 }
+
 .memo-blue {
-    border: var(--memo-card-blue-border);
+	border-color: var(--memo-card-blue-border-color);
 }
+
 .memo-green {
-    border: var(--memo-card-green-border);
+	border-color: var(--memo-card-green-border-color);
 }
+
 .memo-yellow {
-    border: var(--memo-card-yellow-border);
+	border-color: var(--memo-card-yellow-border-color);
 }
+
 .memo-card p {
-    padding-right: 32px; /* 削除ボタンのスペースを確保 */
+	padding-right: 32px;
+	/* 削除ボタンのスペースを確保 */
 }
 
 /* メモ追加フォームのスタイル */
 .memo-form {
-    display: flex;
-    gap: 8px;
+	display: flex;
+	gap: 8px;
 }
 
 .memo-form textarea {
-    background-color: var(--input-bg);
-    border: var(--input-border);
-    padding: 8px;
-    color: var(--text-color);
-    width: 230px;
-    height: 230px;
-    box-sizing: border-box;
+	width: 230px;
+	height: 230px;
 }
 
 #add-memo {
-    background-color: var(--add-button-bg);
-    font-weight: 400;
-    width: 80px;
-    height: 30px;
+	background-color: var(--add-button-bg);
+	width: 80px;
+	height: 30px;
 }
+
 #add-memo:hover {
-    background-color: var(--add-button-hover-bg);
+	background-color: var(--add-button-hover-bg);
 }
 
 /* 優先度バッジのスタイル */
 .priority-badge {
-    display: inline-block;
-    padding: 4px 8px;
-    margin-bottom: 4px;
-    font-size: 12px;
-    font-weight: 600;
-    width: fit-content;
-    order: -1;
+	padding: 4px 8px;
+	margin-bottom: 4px;
+	font-size: 12px;
+	font-weight: 600;
+	width: fit-content;
+	order: -1;
 }
+
 .priority-low {
-    background-color: var(--priority-badge-low-bg);
-    color: var(--priority-badge-low-color);
+	background-color: var(--priority-badge-low-bg);
+	color: var(--priority-badge-low-color);
 }
+
 .priority-medium {
-    background-color: var(--priority-badge-medium-bg);
-    color: var(--priority-badge-medium-color);
+	background-color: var(--priority-badge-medium-bg);
+	color: var(--priority-badge-medium-color);
 }
+
 .priority-high {
-    background-color: var(--priority-badge-high-bg);
-    color: var(--priority-badge-high-color);
+	background-color: var(--priority-badge-high-bg);
+	color: var(--priority-badge-high-color);
 }
